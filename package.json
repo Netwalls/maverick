@@ -1,0 +1,32 @@
+{
+  "name": "maverick-agent-wallet",
+  "version": "1.0.1",
+  "description": "Maverick: Fine Terminal Multi-Agent Ecosystem",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "dev": "nodemon --exec tsx src/index.ts",
+    "invite": "tsx src/invite.ts",
+    "command": "tsx src/utils/commander.ts",
+    "history": "tsx src/utils/auditor.ts",
+    "shell": "tsx src/utils/shell.ts",
+    "deck": "tsx src/utils/commandDeck.ts",
+    "maverick": "tsx src/utils/commandDeck.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@solana/web3.js": "^1.91.1",
+    "bs58": "^5.0.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/bs58": "^4.0.4",
+    "@types/node": "^20.12.7",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.5"
+  }
+}

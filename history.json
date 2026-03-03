@@ -1,0 +1,1606 @@
+[
+  {
+    "timestamp": "2026-03-02T15:13:31.915Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "bdwuECjqPszNkXwcc6oxCwDTHuK86GEsHinngweoQwQS9gEL2sM1vEkjKJ5krdfzXNZ5jspCqsnHAUuJ79s9sox",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 5.0000 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T15:14:06.347Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "2LCgS6zJdcycDktQVzZidktyrVNNWaW7fRZfPQcQrBntmewLnVB3f2EDo12pvvNdbjeycXdfDN18stomgF2zPppn",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.9900 SOL, my analysis is: Market conditions indicate high confidence. It's an optimal time for capital deployment."
+  },
+  {
+    "timestamp": "2026-03-02T15:14:21.694Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:14:21.696Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:14:21.696Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:14:21.696Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL."
+  },
+  {
+    "timestamp": "2026-03-02T15:15:15.213Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "5azNmYc7oaTfp11PXnoRGQtrEZsWnh1AWuBuxGadqcenzTam4jZQfxPeLWfDZ1PWsQL4T5MPt8ANphMoHFyDzyJh",
+    "reasoning": "[AI ADVICE]: Based on current NEUTRAL sentiment and your balance of 4.9800 SOL, my analysis is: Equilibrium reached. Monitoring news cycles for the next breakout signal."
+  },
+  {
+    "timestamp": "2026-03-02T15:15:53.826Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "61mLjJLH9XQEky5z6jyfw2MpFtbijye5YxsRxytJzevquEdxKzuBxwUyVcjLGBaioNX1wb9qq9fz5gGncMbndzuD",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.9700 SOL, my analysis is: Market conditions indicate high confidence. It's an optimal time for capital deployment."
+  },
+  {
+    "timestamp": "2026-03-02T15:16:10.298Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:16:10.300Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:16:10.301Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:16:10.301Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL."
+  },
+  {
+    "timestamp": "2026-03-02T15:16:28.656Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "28KLf9y1TWfkL7svPJCDVdHTGzU6sJKExGLaJcxgG2NutTEUjMPGyewwhVKQqqGAD2KjE1dZSpkR2Z8twKApnw2V",
+    "reasoning": "[AI ADVICE]: Based on current NEUTRAL sentiment and your balance of 4.9600 SOL, my analysis is: Market is searching for direction. Strategic patience is a valid trading strategy here."
+  },
+  {
+    "timestamp": "2026-03-02T15:17:01.392Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "2FQs5AvoiaLzAFvypRFEehch6W1Aumw4GirWvPuKLta6M7wRwQnKF1V6U5z2m4py4BRJdqtAvgA9F49ZaqSKMjyA",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.9500 SOL, my analysis is: Sentiment is strong. Risk-on behavior is historically profitable in this regime."
+  },
+  {
+    "timestamp": "2026-03-02T15:17:33.429Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "2mmi8BwjonBatXjScyBuFLhWjhm3yZXQqNNg6g6HHMoqzBPiniK4Q6rpGEyjoAVJwaurRB4adufetyLW9PEMJKE9",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.9400 SOL, my analysis is: Sentiment is strong. Risk-on behavior is historically profitable in this regime."
+  },
+  {
+    "timestamp": "2026-03-02T15:17:48.971Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:17:48.975Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:17:48.976Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:17:48.979Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL."
+  },
+  {
+    "timestamp": "2026-03-02T15:18:07.221Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "4xXgrexSpsRMdKKubZQPKGNpZRCCXAgfcteDYTNekZ2BNYKWrHv8WmsZokmHhUDpnG19kzDnMWVt9eQpgbZXrtZP",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.9300 SOL, my analysis is: Sentiment is strong. Risk-on behavior is historically profitable in this regime."
+  },
+  {
+    "timestamp": "2026-03-02T15:18:42.405Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "5zuGg7u6MSGFY1wpFNrfJJmWt2VBJAE2dZBYH9A7AzT8AxEzib2xBCB8uvGQA3631wv5NDtexeZfKwpUFfhuR8CJ",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.9200 SOL, my analysis is: Sentiment is strong. Risk-on behavior is historically profitable in this regime."
+  },
+  {
+    "timestamp": "2026-03-02T15:19:16.418Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "3FLo8aR8NxSjuLKdYMCuJmfjyneXMP3nH8eaKvhcZNnbzXUHeTLSYE3hCBKGKoJrPMrQQTBYEyTzMAMx7YQ7jBVt",
+    "reasoning": "[AI ADVICE]: Based on current NEUTRAL sentiment and your balance of 4.9100 SOL, my analysis is: Sideways movement expected. Maintaining current positions until a clearer trend emerges."
+  },
+  {
+    "timestamp": "2026-03-02T15:19:32.019Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:19:32.021Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:19:32.021Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:19:32.022Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL."
+  },
+  {
+    "timestamp": "2026-03-02T15:19:56.331Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "2eHX3XqUQgdF6e2usmizn5uFjarMGwVP6fRLs6mNiZ4iB6zAXKfJenM1EpnYKsyHHEQGtUGAaSMQXdS52zsDzr5",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.8999 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T15:20:30.609Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "2VEg6m4g5ZRWeFSn8gFMQx1RspP6ysndeuzs94WWabDv2ivQtBzVtdMi3HLPgP3bjXZTztGNKgFNqEByRw56CD6u",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.8899 SOL, my analysis is: Market conditions indicate high confidence. It's an optimal time for capital deployment."
+  },
+  {
+    "timestamp": "2026-03-02T15:21:24.050Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:21:24.051Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:21:24.051Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:21:24.051Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL."
+  },
+  {
+    "timestamp": "2026-03-02T15:21:45.271Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "sADB85PETZFNbv3L5pL4hSn2KaMEJN9W8iTBypEaaPHpCgkzkeU7g9CjyxeCpNX7ZmXfjj9ut1v4F3UDdyGbjbs",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.8799 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T15:22:25.862Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "22Hc8NqDuHQrsp5PS37urJSeg36nQNzNQcbvRRJBE7X5VPSozcDiMBcUPDuxWh9GuYGF5ju9QwceuUncRwzkTJ4Q",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.8699 SOL, my analysis is: Market conditions indicate high confidence. It's an optimal time for capital deployment."
+  },
+  {
+    "timestamp": "2026-03-02T15:23:12.118Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:23:12.120Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:23:12.121Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:23:12.121Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL."
+  },
+  {
+    "timestamp": "2026-03-02T15:23:32.688Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "PZKvodnvbYJofxthU7b5uM2LaRA8Gz71v49a9p9pXD97rpbV8QJF9tzfnuZXYDxwcyTz9c1UpU7fVyDLzpMChQP",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.8599 SOL, my analysis is: Market conditions indicate high confidence. It's an optimal time for capital deployment."
+  },
+  {
+    "timestamp": "2026-03-02T15:24:10.850Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "r46KkryDhbgwZzPZNAQFH2ux5LK7gjwFYradnJ7Kdpe2aaCE3Ton8DLNKDSnW3rB38shx2hAS82n37z3FreghSw",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.8499 SOL, my analysis is: Market conditions indicate high confidence. It's an optimal time for capital deployment."
+  },
+  {
+    "timestamp": "2026-03-02T15:25:01.542Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:25:01.544Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:25:01.545Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:25:01.545Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL."
+  },
+  {
+    "timestamp": "2026-03-02T15:25:21.010Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "kAbx8Cs6vkQkcUb3bb2beXSRSASfNAPSB6X8WQrGtsmzFYMdkZhaC6S5B7QM2qV6xA2jovCAGYDHMxoxhHybDJo",
+    "reasoning": "[AI ADVICE]: Based on current NEUTRAL sentiment and your balance of 4.8399 SOL, my analysis is: Sideways movement expected. Maintaining current positions until a clearer trend emerges."
+  },
+  {
+    "timestamp": "2026-03-02T15:25:57.698Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "4bJtTb87Se1pVCQCiAgv8DjMueRN3QctZqHqgQWUVH1nrQVaQiUWJ4wCX4nLabCPq5LBk1tMdk22Rs4jkaX7J2Qa",
+    "reasoning": "[AI ADVICE]: Based on current NEUTRAL sentiment and your balance of 4.8299 SOL, my analysis is: Sideways movement expected. Maintaining current positions until a clearer trend emerges."
+  },
+  {
+    "timestamp": "2026-03-02T15:26:37.316Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "5Xq3wJY4SzdT4CeFwN3FosfJbdEUVFcBH7eb2VV4cChfxCYAQ8nFUWpKb7REzYY1cDt9aAUXnwkFGJD45DZdYXMq",
+    "reasoning": "[AI ADVICE]: Based on current NEUTRAL sentiment and your balance of 4.8199 SOL, my analysis is: Market is searching for direction. Strategic patience is a valid trading strategy here."
+  },
+  {
+    "timestamp": "2026-03-02T15:26:55.921Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:26:55.923Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:26:55.923Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:26:55.924Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL."
+  },
+  {
+    "timestamp": "2026-03-02T15:27:14.654Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "4T64nshUerP9Jxkdf3LABYsEG78b3mxRkjYsKQBevxJp1kNrcSuDtd5YkaKB5qULbpeQTg3WEsoELeqJB6rv3tFv",
+    "reasoning": "[AI ADVICE]: Based on current NEUTRAL sentiment and your balance of 4.8099 SOL, my analysis is: Sideways movement expected. Maintaining current positions until a clearer trend emerges."
+  },
+  {
+    "timestamp": "2026-03-02T15:28:28.641Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "5eHGow3w31ffLPF8nhuvkLCGBccAE45HJdjFtrP51VPfW8Eu9WVsWrrG9UgrbZmWj2StqKbJinCQSQKhiDiqCPqv",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.7999 SOL, my analysis is: Sentiment is strong. Risk-on behavior is historically profitable in this regime."
+  },
+  {
+    "timestamp": "2026-03-02T15:28:44.925Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:28:44.926Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:28:44.926Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:28:44.926Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL."
+  },
+  {
+    "timestamp": "2026-03-02T15:29:04.424Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "23SLWdgP21hjeWXcH7QB4R9cD4T2NmQ2Y8TUcsQc2UGNR3GdEdJsdNRgNEg2G6BH2opcAc8FQSNHb57nP3z9F7G2",
+    "reasoning": "[AI ADVICE]: Based on current NEUTRAL sentiment and your balance of 4.7899 SOL, my analysis is: Market is searching for direction. Strategic patience is a valid trading strategy here."
+  },
+  {
+    "timestamp": "2026-03-02T15:29:40.787Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "5GiSfeej2mXrkE1td64ZWdTqKL2NpiWBMDQZPML9a7RrCy7Vtycw6LiahJx4ai6wYBqVbr3TVXUktfp5gGmJSHh4",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.7799 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T15:30:18.187Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "2kxcJWrCXtPTcxwaR4kQo84XMpt2cEwc6zWptL6xveHysr8bysUBRw53NwxDys9JyLHKodU8hrqNovYah4XcmvzR",
+    "reasoning": "[AI ADVICE]: Based on current NEUTRAL sentiment and your balance of 4.7699 SOL, my analysis is: Market is searching for direction. Strategic patience is a valid trading strategy here."
+  },
+  {
+    "timestamp": "2026-03-02T15:30:34.332Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:30:34.333Z",
+    "agentAddress": "DjjFRpqncRK4RC6hhFxNpHBvkpd1HzRoXFNjBteYrsRw",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:30:34.334Z",
+    "agentAddress": "DdkWDaVLw1yasbP7NzQhoJ4yMWh7UxgR35yVBmfonuyg",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T15:30:34.335Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL."
+  },
+  {
+    "timestamp": "2026-03-02T15:30:53.082Z",
+    "agentAddress": "5MJkcasYnUrrduaxBpUYitv5cnHTSFpjixH9qUyho95q",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "4MXtoNA7z6XgJBSw9dcsB9aXk5ELUoKwSYdSmy8uAp8XspT8ohNDScBk9Z3LPKS4NRZDKnzLcYPpXXeQz7dXRL6M",
+    "reasoning": "[AI ADVICE]: Based on current BULLISH sentiment and your balance of 4.7599 SOL, my analysis is: Sentiment is strong. Risk-on behavior is historically profitable in this regime."
+  },
+  {
+    "timestamp": "2026-03-02T16:17:09.051Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL",
+    "reasoning": "Cycle completion in the rotating savings protocol."
+  },
+  {
+    "timestamp": "2026-03-02T16:19:36.801Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL",
+    "reasoning": "Cycle completion in the rotating savings protocol."
+  },
+  {
+    "timestamp": "2026-03-02T16:21:59.903Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL",
+    "reasoning": "Cycle completion in the rotating savings protocol."
+  },
+  {
+    "timestamp": "2026-03-02T16:22:47.556Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "LEND_SOL",
+    "description": "Lent 0.2 SOL to 5oYwGLWp5PDWvE2FHwcMgX5hew7osp5qjP48DWhvS6Ho",
+    "signature": "61o6LqonTMWtWCHRDt6KyJGKbsjrRewupSwSNaFJ6rCbCPP8xgHhXL4fwjtCE2H2ddKV6WTLSmDv31GCXb4J614i"
+  },
+  {
+    "timestamp": "2026-03-02T16:22:47.561Z",
+    "agentAddress": "5oYwGLWp5PDWvE2FHwcMgX5hew7osp5qjP48DWhvS6Ho",
+    "action": "BORROW_SOL",
+    "description": "Borrowed 0.2 SOL from DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "signature": "61o6LqonTMWtWCHRDt6KyJGKbsjrRewupSwSNaFJ6rCbCPP8xgHhXL4fwjtCE2H2ddKV6WTLSmDv31GCXb4J614i"
+  },
+  {
+    "timestamp": "2026-03-02T16:22:58.820Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "LEND_SOL",
+    "description": "Lent 0.2 SOL to BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "signature": "3ZYEDeZjM1pm4NjBBBKBnQ5pXX4uah4ZdnEZyjaRnFJXAa1S48k6qbN6tv34QYTkF53QXPcCdBEkigx68rqbjbbY"
+  },
+  {
+    "timestamp": "2026-03-02T16:22:58.822Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BORROW_SOL",
+    "description": "Borrowed 0.2 SOL from DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "signature": "3ZYEDeZjM1pm4NjBBBKBnQ5pXX4uah4ZdnEZyjaRnFJXAa1S48k6qbN6tv34QYTkF53QXPcCdBEkigx68rqbjbbY"
+  },
+  {
+    "timestamp": "2026-03-02T16:23:08.441Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "5DyaeTh3fqwwHs2e71BJKtAbcyAwt6DCLWxdes2TQEGM4VZvdBFbrG12VZUxEHKWmHw5WKXh6xx3GcPiYBfDLb8k",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 9.6000 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:23:18.621Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "PREDICTION_BET",
+    "description": "Dry Run: Exchanged 0.05 SOL for NO shares at Kalshi Market.",
+    "signature": "4NiCBEz42rmZs2mEzekBEcQKUXHGBAHgG3oq4m9Zs6RVkJ1Z9r7aXVJfCWx4SxqX9RB9X288dZ6ugFqS7WKkp3he",
+    "reasoning": "[PREDICTION SCAN]: Market sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:23:28.513Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "PREDICTION_BET",
+    "description": "Dry Run: Exchanged 0.05 SOL for NO shares at Kalshi Market.",
+    "signature": "3xKYLQC86JirfKGj6JKdMUG7HWLtUWZAxoa7fxgR9VkQcijMooRiB5Wsh5KmHjQJqAnWPr4ianTyxcnkTQ5ucn8c",
+    "reasoning": "[PREDICTION SCAN]: Market sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:23:37.968Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "H47pcRrmrpi5AriZfD2HnvjvP3eM5CoVR9v2MeiMc2nCVmryBG7jugin2MZzszBUA5gE7Nw7kZeDr5Wyns2vmv4",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 9.5900 SOL, my analysis is: Equilibrium reached. Monitoring news cycles for the next breakout signal."
+  },
+  {
+    "timestamp": "2026-03-02T16:23:52.891Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "LEND_SOL",
+    "description": "Lent 0.2 SOL to BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "signature": "5aX1tqQuP5Zp497Ne59HAAGBY6KfhjUFHvWaSpaQad8k3ChKAxNhH7jUmtVrMd8uhnnoYVQZTQ4Rt6kmpkEXUsei"
+  },
+  {
+    "timestamp": "2026-03-02T16:23:52.894Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BORROW_SOL",
+    "description": "Borrowed 0.2 SOL from DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "signature": "5aX1tqQuP5Zp497Ne59HAAGBY6KfhjUFHvWaSpaQad8k3ChKAxNhH7jUmtVrMd8uhnnoYVQZTQ4Rt6kmpkEXUsei"
+  },
+  {
+    "timestamp": "2026-03-02T16:24:03.511Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "PREDICTION_BET",
+    "description": "Dry Run: Exchanged 0.05 SOL for NO shares at Kalshi Market.",
+    "signature": "4pG36DiCNwNX44YiQgDQrVo4mCgm4GyrwZwKBG9RgLTNuXAFazc1dn5kc1F55QPon3YSFttKtduaseBScNsn6vzH",
+    "reasoning": "[PREDICTION SCAN]: Market sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:24:26.547Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "3mgmEVcDE5RC1ujL8Ga9DVLLYauzeyLtk9B5o5me3FJrhbPMNUVueEyvESp8ok47evWQbjEW7iQ3NGjxQyQYnBpU",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 9.3800 SOL, my analysis is: Market is searching for direction. Strategic patience is a valid trading strategy here."
+  },
+  {
+    "timestamp": "2026-03-02T16:24:37.350Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "PREDICTION_BET",
+    "description": "Dry Run: Exchanged 0.05 SOL for NO shares at Kalshi Market.",
+    "signature": "3SQCN1hVw3S8cHnAvfVjZtSENjPSYGaAWAFvFpfFbAt1sdPQCudX6RooNe16pgRXd88durXFEfVUcrJAsgobK3ZK",
+    "reasoning": "[PREDICTION SCAN]: Market sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:24:49.041Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "PREDICTION_BET",
+    "description": "Dry Run: Exchanged 0.05 SOL for NO shares at Kalshi Market.",
+    "signature": "3H8zqENNZhxMmXHc2s1CQ6wMYSFeHoGB5BnKawWFivJutLSmX3CdEhFKKcCFpExZ2NQzDtJncyhqYid5CE2j3K68",
+    "reasoning": "[PREDICTION SCAN]: Market sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:24:59.412Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "4V7GigJdb1utJAjzthHznHc2Bd5A26QUyBgsaHMZturqKSy4VfXfSA7wo9B6ntF4QV1JpA2bPPcmaYR5tdPTUefd",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 9.3700 SOL, my analysis is: Market is searching for direction. Strategic patience is a valid trading strategy here."
+  },
+  {
+    "timestamp": "2026-03-02T16:25:09.745Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "29z9dePNcUspnSBpnRXV7irAoKFgVBQVE392722ADZ1kUy7HQAYyKSNwnbRpmkJTAbPXfnzPg1bkHRmeQbpa7Pob",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 9.3600 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:25:19.049Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "2XmQFiNJHFXxgnsm9rPDC1fQjn3vhBvpRMueUN4GCGkjRgRamNcyDhL65apXFhtCaDWxH6ceJAioY5Nh21dhHekH",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 9.3500 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:25:41.861Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "4PwLmTqkaxNMjMPMyUVsYbAHhHhmyNxpPxPxLHaN2q1TPqqMQfQNmaXHSgeU83S3zWjzwi4KwpidGJXmAPx6S6y5",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 9.3400 SOL, my analysis is: Sideways movement expected. Maintaining current positions until a clearer trend emerges."
+  },
+  {
+    "timestamp": "2026-03-02T16:25:51.499Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "2GmCkWR982mrzumcRDwW9MznkdLEuxgjZmiVyxSQahn97ZcLujD39RQheCqrjimnRNj7iMqoUAVekntKbc7d3h6t",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 9.3300 SOL, my analysis is: Market conditions indicate high confidence. It's an optimal time for capital deployment."
+  },
+  {
+    "timestamp": "2026-03-02T16:26:02.174Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "5p3hCeGjSDmSNRHFFWfvLKGbpeF52HxoeiByU4H1AyrWRyJWzZXfvRsScY4pjuyVW5DJSELTdHddwoo7dSzAnDkZ",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 9.3199 SOL, my analysis is: Sentiment is strong. Risk-on behavior is historically profitable in this regime."
+  },
+  {
+    "timestamp": "2026-03-02T16:26:12.494Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL to GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5",
+    "signature": "5Zr9CHfDkrF17vf516pd32JmbzJrnP4gRj6e3snxHTkYGyjXkC3UqhRSo3EYZuU7GrgBQmQfYiTh3nyGHfgst6iN",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 9.3099 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:26:24.330Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "LEND_SOL",
+    "description": "Lent 0.2 SOL to BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "signature": "5qx7QYpAfbBUrkDqi2EGM3TAMSTJRXpE3N3fn6QDWZtfNMipUiuHpkEbw7DgUwKXUiyk7rUNAv9qeDpMtHwVce2X"
+  },
+  {
+    "timestamp": "2026-03-02T16:26:24.334Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BORROW_SOL",
+    "description": "Borrowed 0.2 SOL from DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "signature": "5qx7QYpAfbBUrkDqi2EGM3TAMSTJRXpE3N3fn6QDWZtfNMipUiuHpkEbw7DgUwKXUiyk7rUNAv9qeDpMtHwVce2X"
+  },
+  {
+    "timestamp": "2026-03-02T16:26:34.484Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "PREDICTION_BET",
+    "description": "Dry Run: Exchanged 0.05 SOL for NO shares at Kalshi Market.",
+    "signature": "5T5KZG6UWdLkSCyvFMKH5MKPXA8CK3FER61iAadX9YQUMbMiXQTr1itHCgFXcLAGt2VjrPP5k9ye86BNfc6t8AW8",
+    "reasoning": "[PREDICTION SCAN]: Market sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:26:53.459Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "PREDICTION_BET",
+    "description": "Dry Run: Exchanged 0.05 SOL for YES shares at Kalshi Market.",
+    "signature": "3USfieSG2jLBK6CaAaRvMsZ7q3r8d8SiZLrJK6u47F8uXjNizc3wqL3mzF2dpMoMXnrF9r7zeVD3ZzKSxwRs426m",
+    "reasoning": "[PREDICTION SCAN]: Market sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:27:10.036Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "LEND_SOL",
+    "description": "Lent 0.2 SOL to BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "signature": "3AE5et6GNUgDYWv6sKsxf4LTrTqcPYSwE5yGmc7NbvjdNzcE6Mbf7eTtAYjnpB1ubmvE1vcG8F8zSDHb6qESj8wC"
+  },
+  {
+    "timestamp": "2026-03-02T16:27:10.037Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BORROW_SOL",
+    "description": "Borrowed 0.2 SOL from DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "signature": "3AE5et6GNUgDYWv6sKsxf4LTrTqcPYSwE5yGmc7NbvjdNzcE6Mbf7eTtAYjnpB1ubmvE1vcG8F8zSDHb6qESj8wC"
+  },
+  {
+    "timestamp": "2026-03-02T16:27:19.670Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "5RA1eRjz9wHsDfmButezfzALPAFrapnFLJ9Zn8X2RWEnfr4PyJHXod9R4tYHiNwqcPJ2ykishdgA9cwKQr3gyG4K",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:27:28.776Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "5Bp6branzbpVRB8ZFLsFk8cgsUWeXrZX74QErwKhQimbWNkvTvnbavge5CskorcY6cvBUA2FpBxfbxcXTc488yJg",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 8.8499 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:27:38.199Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "3RSinWEDYHgdq8RfgfFmSBuhQwnkjWPMKDnbXf7CwkxPWSa95oP4bj1QkXiJ7hVh11JS7r2b8o1eLksZmeqPAiQA",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:27:48.512Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "3VpGdwaFgLTvXxY6YUquT617kmC6VU9j6MJQM2R4J3Ew31HfcXauCFRcVVizdo36xE9ZzzacELYzWFkixU8RN4UJ",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 8.7899 SOL, my analysis is: Equilibrium reached. Monitoring news cycles for the next breakout signal."
+  },
+  {
+    "timestamp": "2026-03-02T16:27:58.246Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "3fzzmcLFZxPrqpJJHaYPekidvka2sPPCGaY3QbUebmcfWeNct1ZLifEZXrNZvNNqtGPpPtaP4WA59sjXqT47SmdC",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 8.7799 SOL, my analysis is: Market is searching for direction. Strategic patience is a valid trading strategy here."
+  },
+  {
+    "timestamp": "2026-03-02T16:28:09.632Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "2b15N6h8bMq8XL6dozAkmkuFTGxvAkfmUWhC1UmKj59iNCQTQJ1vBHqS8b17XWeL2F4FfnYYXDfAaqZoz5sHdhcN",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:28:19.762Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "2LBsqNjpHoou2XcCTECUPZDLdmG88sVirawSumDEsmLihWKWvtAXoFWexUrs26xLBAMyUpTyhR9RQ1XGZfjYjryx",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:28:30.024Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "3KaFYXDpfsPxEFqhQbXwUA7CHPJBwDsXJfYk7EvLE6PhDR6eeYqMx54xv1N9c4q1zbFohQdb5ysw9LRMTuLAMzLa",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 8.7199 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:28:39.842Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "gCLTkQvC5rQPohpE6tcLjnF5Q54vrwgFTphcbR9iZkvGvhdEA8s4HbCZq9DY6j6j2pfw674Q5uCW5NjmHT3Emo2",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 8.7099 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:28:49.546Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "2vfEwa4dbuGZXB3WttQ9bj3m3h6qaEsXGs5m1H4MooMBrncApGj63Qjwe7HBwEnWGyQtNoWFX5QJVQDrpkpL3VE9",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 8.6999 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:29:03.898Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "2bj85TU48mCTjjAbc5W9EjiyLeehbdn3xjPDKomtoLYuYVzFhsAKbTFDboZjtRHct7fSjcMH8cZmzFxXr2beq2zi",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:29:15.292Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "kDdMpKP7P723Hu7UfqxksGKm5iyMEKsp9zqz92j6BnWGvjV2g1zh8Sx1LMEdduTbs8ZWNYbxjs5SBtVgKBprWAR",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:29:25.861Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "ZoDG9tzDK1PKxjo2AApk3geA7hXv2vb2Yp3cV122fkNYySdStsajFEYz5w4vVKhh6mCnQoLbeJyhTHSScWRp23s",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:29:35.625Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "3FbVpq7XJq7gigKNRB974qDo277dYCMqC5GT9H8RpZ4vD1QqEoCUHgi8PvhnCz95BPQmyEX19b8qtuEMxgJ6qFs7",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 8.6399 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:29:45.443Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "qy3tNHeavsxGqNPiaDffTrwdRqa9g2318AN1Zx9f76ELshN2t4T2UX2b5xvrjF3bEqZJHctcKKVLyoeToiuU5Do",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:29:57.952Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "2hTLLE4o8KF7kcGkhExsciJfFGD6rrdVx2GdFkPy1T5SybZDMLhkBQ6iK17A1y1abjnxoEdefaawRDvdFSXGYxRR",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:30:08.028Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "2xPb3cEfMChHt8ZbQN2BRjunkZ4pXedVzpWJjuxRCqcdRU6RLY9hvm541EPoLXZRdzxLeqJuVniYzJhNvfVQo61p",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:30:17.693Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "ko5oUES3Qc1PYKDcGjEJzQxs6ZPwR2LWMwNgTME94P1GmrescJEhNWnFjvbCq3iRWk3fkERfhciLMcb2Pu3etsZ",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:30:28.263Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "54DXo24kCK8sK9gpQyWz4WK47FqjuJZHUEnp7GfNjQAMEUG15e7ybKDPLeYWYdQ9aiZKSnehV6k5PeXHC7ZfUoE6",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:30:47.037Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "46ygPQnYU9eYt48XmFowtxUK1gJt1TPbsUY3JmpKLRFW8vGovCyzPRRGGjm6NWx6pNwqxEEX6hnoie4izjjdz6TG",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 8.3798 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:31:04.739Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "5pVk4AyjLDChHRu5DuJzza7f2b8bHcomN1SxNSwzvCwZe6XNePLcx6Tu825V64rHKduBwLvnXzc3XxsRyQuDrnAA",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:31:10.492Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "LEND_SOL",
+    "description": "Lent 0.2 SOL to BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "signature": "5uciAmeRNru7smMebQgJ2eNbJGn26NxQhCudpTxHU61zHa4CX9AL7f3si3RFueASUs8DaukQZtvaMNjCCR9ZgFii"
+  },
+  {
+    "timestamp": "2026-03-02T16:31:10.493Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BORROW_SOL",
+    "description": "Borrowed 0.2 SOL from DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "signature": "5uciAmeRNru7smMebQgJ2eNbJGn26NxQhCudpTxHU61zHa4CX9AL7f3si3RFueASUs8DaukQZtvaMNjCCR9ZgFii"
+  },
+  {
+    "timestamp": "2026-03-02T16:31:22.731Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "53rZtjBZDEwBofdqZ4ikqvVj93LwtTq8AsHFGg9iA2LHkLffhnNUJuAMLtycNLrMfLRyPxYTrA1QnfzuNsW1uPax",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 8.1098 SOL, my analysis is: Sentiment is strong. Risk-on behavior is historically profitable in this regime."
+  },
+  {
+    "timestamp": "2026-03-02T16:31:31.365Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "4PNj2d9JAG6Uj55N79SsRZauyoHkA8kTVQo1W5RqHttSNBeG3Vds2z7NRrqApcgVJUCW3r1sgnZZHjVAwQQ7SbNM",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:31:41.657Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "4btLSni2JdFPU5vtq5DjYH3begPbRcSNV2xTJ8t4ebuXdopT96ogVzJpway4DjqsSA2XCtkS7KV4Qo8bz5ZbL6fY",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:31:52.657Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "4ydsiAwA3EfBnyr7tNEAWc9oyVfYdHbuxuQKuLVrRFAFtAa18AP9M4gPya8pSAUB2qEXNSMXSiSjhaVX6E6ej67q",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 7.9998 SOL, my analysis is: Market is searching for direction. Strategic patience is a valid trading strategy here."
+  },
+  {
+    "timestamp": "2026-03-02T16:31:54.611Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T16:31:54.891Z",
+    "agentAddress": "5oYwGLWp5PDWvE2FHwcMgX5hew7osp5qjP48DWhvS6Ho",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T16:31:55.238Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T16:31:55.239Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL",
+    "reasoning": "Cycle completion in the rotating savings protocol."
+  },
+  {
+    "timestamp": "2026-03-02T16:32:04.770Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "5VzmU5ZZwF5hkzRGKVSKNBckPGzUNmSbgqQ4vUgLL1tjptptYm5JvfrKDvPMCzuu7zhhmUt31NCH8LB36QHvEm6W",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 7.9398 SOL, my analysis is: Sideways movement expected. Maintaining current positions until a clearer trend emerges."
+  },
+  {
+    "timestamp": "2026-03-02T16:32:14.188Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "4X1jWDtKfDRPLjkYza6YTCcEK9gzFHbXinGPatf7q8rJyb249E6wvgBDRMJAoE8HpqCBiohdYJjFR9SrWxMY1Mt1",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:32:16.682Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "R7Lapc1VBzfjeroVrmqTUreRVZgL3fua16GL7U4ZoYEF7cBNLA9W7wm7Lz2B4DvPJnmd19kGqRKM9ydZo4RNMqq",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:32:35.886Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "3dTtRx28WYL3aAsAGsPbqs2ZfVBm9hHToa6YpnNhFYjaNBzj5ARi8NwTw7DoiPzzUpn9T8xs49QsZk96u3ucY38Z",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:32:38.433Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "4aeLDpRB9Uin8pfo84DFgK8RhKbBBQoAo9CUeueAiyUfQbLa88WLtpLsmuHwLkikKW9icZsf73LFUJGb3aaiGyiS",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:32:50.747Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "2WGVh9rMLiLMcteW5mgJopwudrb7DFdGr17A7XEHqZNEFimvfBNtniEpNb6ugfpEXGS37TGRYvofd5EgHJjmPeYT",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:32:58.111Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T16:32:58.412Z",
+    "agentAddress": "5oYwGLWp5PDWvE2FHwcMgX5hew7osp5qjP48DWhvS6Ho",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T16:32:58.681Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T16:32:58.682Z",
+    "agentAddress": "5oYwGLWp5PDWvE2FHwcMgX5hew7osp5qjP48DWhvS6Ho",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL",
+    "reasoning": "Cycle completion in the rotating savings protocol."
+  },
+  {
+    "timestamp": "2026-03-02T16:33:10.551Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "3vszeQEHKaTY2UhQF1MBpZvfk2v5ysNCABmAPxdttchWccJtdrSL38Twb3DJE68ALKci7STtfkgAbA7CAWDQcZLM",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 7.7798 SOL, my analysis is: Market conditions indicate high confidence. It's an optimal time for capital deployment."
+  },
+  {
+    "timestamp": "2026-03-02T16:33:22.692Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "62VTPkPT4a9kSu6aXr8WQDvxfcFoHwqC6iY7PUzr3UGQ6crN5zwgDkoEBbHfBwSqNXtc421hPbP59vMHs6cckQtq",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:33:35.306Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "5WuE9tyZvqypksgY1K9zzaunSvoTbDDCNVkXQvcS3Bybzo46iTW1ZbqDyN3mrtxNPfR39vN3Kt36jSMk6fdDsCR1",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 7.7698 SOL, my analysis is: Market is searching for direction. Strategic patience is a valid trading strategy here."
+  },
+  {
+    "timestamp": "2026-03-02T16:33:36.700Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "2UrghxFBYkmdV9dmgnv6mZJV22towMjKkcp9WW7XEjaRWNwVQAiqMPBGgzcXrW7PomByShZnbYqzgN5SzHFfejD3",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 7.7598 SOL, my analysis is: Market is searching for direction. Strategic patience is a valid trading strategy here."
+  },
+  {
+    "timestamp": "2026-03-02T16:33:41.007Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "LEND_SOL",
+    "description": "Lent 0.2 SOL to BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "signature": "3KF6pFZyCaJCi4FwzMpgMDAWMwBV8iui327FgR9316c96xyoPBXEyQ4iMApjWSgUbrwCJGfNGbpBAkFqYA476XG"
+  },
+  {
+    "timestamp": "2026-03-02T16:33:41.008Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BORROW_SOL",
+    "description": "Borrowed 0.2 SOL from DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "signature": "3KF6pFZyCaJCi4FwzMpgMDAWMwBV8iui327FgR9316c96xyoPBXEyQ4iMApjWSgUbrwCJGfNGbpBAkFqYA476XG"
+  },
+  {
+    "timestamp": "2026-03-02T16:33:52.964Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "29ZoVzhuv53YqEmCMBxkd7rWB11BMpMkgrzL1LRcKrmsM8QPk2EhM8ncfgosYeEaXwwGyDVLeq68sdaYpQcDVqY7",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:33:58.681Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "5nd6u6Jgv5hHcwMf6zK7AabczUWGhxh6CfCTrXtMAAw9hfqGF8SSipgquDh2Gd2aPpTs44VmDfpWd3tnVNvKPcPj",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:34:01.892Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "4UqdCEswXN9GqC2PAmZEeVk7xZVhhEz2hnwZX2kC1ipXsUg4QVT8Rboo6onoAimkHdJyGUCNkurUXcifzPRUeYYp",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:34:03.159Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T16:34:03.510Z",
+    "agentAddress": "5oYwGLWp5PDWvE2FHwcMgX5hew7osp5qjP48DWhvS6Ho",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T16:34:03.867Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "AJO_CONTRIBUTE",
+    "description": "Contributed 0.1 SOL to the Ajo pot."
+  },
+  {
+    "timestamp": "2026-03-02T16:34:03.868Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "AJO_PAYOUT",
+    "description": "Received Ajo payout of 0.30000000000000004 SOL",
+    "reasoning": "Cycle completion in the rotating savings protocol."
+  },
+  {
+    "timestamp": "2026-03-02T16:34:16.371Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "q7xuzkwrF63y4y6gt43Ry6hqHRHLn6EHPYRN2mpRUCqy3MFPfYVbDzqh4H8mVtitvyxjxVHnvW2GRzSqDWXuQHC",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:34:22.607Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "3geBSxMcJ8R3j87pYSUzjPWs9LUEZLVUKZaiy4hAPo4qeGAC1Ebu699a81ExAJdyHvPuzYKmfaVK1MasBPGSKdHW",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:34:26.476Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "2SARopmUGnzAdoRixWxMyz2j87xL3oSxNq3FRywV9dcdjVmLobmyXFmGmb8sfb42tAPAXKcSnDjE3kgBHfSFujcC",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:34:38.730Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "GDagenMyoyFVoXEdnUf5GJm7bXmGLMmiLJj8cmdptuwvEKyVhZMuqnwJ28xaDBZVkzfjggCZ4maEzyfCBLLp36t",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 7.3497 SOL, my analysis is: Equilibrium reached. Monitoring news cycles for the next breakout signal."
+  },
+  {
+    "timestamp": "2026-03-02T16:38:51.544Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "LEND_SOL",
+    "description": "Lent 0.2 SOL to GVbrhM9Ghih6tmAMwkZaQeeQNjmuiwvkYbyfuoKKDGTE",
+    "signature": "2m3Ty5y2CVhid7WwxuizwdD1cXdNPmWRApv36JQ5wXVVuZVfmagbR2qnSNueyY8hBgvLVFSXuELeCgWhsrfkN4Rm"
+  },
+  {
+    "timestamp": "2026-03-02T16:38:51.550Z",
+    "agentAddress": "GVbrhM9Ghih6tmAMwkZaQeeQNjmuiwvkYbyfuoKKDGTE",
+    "action": "BORROW_SOL",
+    "description": "Borrowed 0.2 SOL from DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "signature": "2m3Ty5y2CVhid7WwxuizwdD1cXdNPmWRApv36JQ5wXVVuZVfmagbR2qnSNueyY8hBgvLVFSXuELeCgWhsrfkN4Rm"
+  },
+  {
+    "timestamp": "2026-03-02T16:39:03.371Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "4szuEcezgHzSuUGjPzmRfVyAZwpL8YhnhK2KCKNQr2rrzPNMse3YnLcpWS8wh9UJXSMvRENSveS71epBfKL1Sami",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:41:33.363Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "41x1y8Xa7zdnkzp4jcAWWoTs13W169sVjzXz1xsV7iZpwBexCUrN7AMe9vsTFnc6q9eM746sfEKFhXX1U55xVHTS",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 7.0397 SOL, my analysis is: Equilibrium reached. Monitoring news cycles for the next breakout signal."
+  },
+  {
+    "timestamp": "2026-03-02T16:41:47.063Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "5ccQgncNefV4QanypgSY93Mnzpm1dqHWAPfVL9xBKigyx2EBocGsTU3GCiT8LgX9QiH4hJjxQffBWHhHQ82qeixe",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 7.0297 SOL, my analysis is: Sentiment is strong. Risk-on behavior is historically profitable in this regime."
+  },
+  {
+    "timestamp": "2026-03-02T16:41:58.648Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "Ftq1FgFPdN146QfATatCuYAErCdax7SVWfWMPW7Grkiap74LZ83N5BfVTFjUpsnBNzHCkd4ExhkmDJoitbVwAzh",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 7.0197 SOL, my analysis is: Market conditions indicate high confidence. It's an optimal time for capital deployment."
+  },
+  {
+    "timestamp": "2026-03-02T16:42:11.236Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "2Fp3A6mysZmz56nAZh3fTcporSZY6Kuo6RcDMsA4W9sRbjRmhk4DnEHLtH9GdE2ioq82HdjVaMWGmXLMADpR5vMA",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 7.0097 SOL, my analysis is: Market conditions indicate high confidence. It's an optimal time for capital deployment."
+  },
+  {
+    "timestamp": "2026-03-02T16:42:25.183Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "qNMdd5wBeEfSMQMvhqMmApKqX9D4rKUF3DSBXDRLPodwVx12PNSj3xYtpSqzq8zj2ejrkb5YiLq81JwGWjrWCNg",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:42:36.800Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "61RZcdQkrNej7qciEr5xFL75iHWGgiWGq57iaHqs5ZB31Mt8tszb5CXXVMpau9onphnvmuyGYGF8Pu5MFGbJ5UCB",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:42:48.193Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "5F5RaStMTcCskbswWTg1xAqmiBc7eJmHtW26vxvUHQeMCPYGmTEGEp9myD21LphhSzcHikbjwv6ga9Eyx18FbPbi",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:42:59.457Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "5nKumiGVsH5ZAogqBC6Y6pk7mjiji6TjVfn7KDGx6zumn4wesSE8VPh1V6Ys1gKPEBLjkLv4FjcicEG723ctm3NF",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:43:10.626Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "Ncbfa3BN18pEwm2i3zEVwK9Uk5N32Szv3ibkn8FN8rYo6QmETrC94rMXAu4z5JZNcazu1VPytG9wSwrnfG4SBAc",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:43:22.077Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "2QSJEre6u4nUSGJL2QS543ZrHhZ9VE4su6vFSzhBBQ163rUFSoFsVEADHGx9VkY92a1F7TwqUc1wPfQtk85sc4Ay",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 6.7497 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:43:33.427Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "4kGvWKrtkwzp9DwEuDnd6sLxu9WP8BkhBmfD97krwZtTCH8FN6ct2PvXvj7mfjxVXAiAkgcK5uQEQXC7LmF6mLgT",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:43:44.976Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "2M1sUhskYBqLtR6mWeS6s6xM8MXwumFhhbwDJBGiBFr5pd6fM2c982ZTVoFhm9edh5JWngT2PQm1bvKrhzk1p4r9",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:43:56.201Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "HSRmSRE5jsALQD8pZatvk2JbH9nccZbY1GbohaRctVN977ZPXzn5cFqNDL38HKsXc337kfH6ZBeBsghv8SJw2a3",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 6.6397 SOL, my analysis is: Sideways movement expected. Maintaining current positions until a clearer trend emerges."
+  },
+  {
+    "timestamp": "2026-03-02T16:44:07.746Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "272SVNDNWsYuPEgAjcNfEMCCAY2Ww5AtFJ6HvEqmFwtHLp5hujvZQtwVDBmwjMMT2GQu2yP6cDYnxt6mMp9aN3ak",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 6.6297 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:44:19.029Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "BYidN81v6oNqWDkXCnyQZRTvXgnpkffm1Zr4N14gC9LuNBmD5tJsuXUHi3qVGi7eiCx73GhQoP7ASVnPuNAGjU1",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:44:31.350Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "42WBTqBruSWCSB9mwR6ugH5MAEsmTUG9R6bfDPqH3Mf8m6roNckKmyQjds2zRhtdhdVqj8RWvt3JHWjQ27455vyX",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 6.5696 SOL, my analysis is: Market conditions indicate high confidence. It's an optimal time for capital deployment."
+  },
+  {
+    "timestamp": "2026-03-02T16:44:43.183Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "5wvoVWjPKbA75DxVBTn3dtangw8HSPpSbsnm83yMZHsTHKQD3spiMdwd5K66LE5ogkNoGoC82sgMy2e7MV8Zv6Cq",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:44:55.396Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "5pSDakCHhRpzSMTZPQFNZo7og3m1tNab6J7tmGXiFJN5wHYq6Cjwstg8exz82g78gKcFgazejTmnVMoaGQQ6oVzK",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:45:28.519Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "4mC1igUUMC1e31MKnSKof4sPGiMQcA6oRZanSTeoKh9aMkRS9YDKkg67vufZWwyDxbfL7pXkWmAj7E9gcckDC82z",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 6.4596 SOL, my analysis is: Market conditions indicate high confidence. It's an optimal time for capital deployment."
+  },
+  {
+    "timestamp": "2026-03-02T16:45:40.213Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "6KNbvFAFPiTjnJJHHDcZYAkS8qVpEk7SEqXDF4YsKQbGCh9hSE2ARJJkx27jxV7jhGjcjPqRYsr3JzEaADp4DpA",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:45:52.704Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "3XPZvd98sPuzxJZdANf44heHcDqMug7rb4NbEpK2nc8HKXgH94XuKa2HD2ybk5bLRVTiPncGnb37ybB3WcaCGkK3",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:46:01.606Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "5TWYgK81nyyJWNTBbQdHLNCNniu2oc53YRWAK3xM1gFE2CQ9SXFDt6TNLXkEyC2S6FXZ9od53qYo8zC1dJmxnodx",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:46:17.062Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "326Qxqf16rqVTxNGbiqYudrCbaGjofyA74Wz6s6DdAUGtGVkWpgx49LJ9QZvWQCfYc6HaY5xBBdGwCbtCr4ojUF1",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 6.2496 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:46:27.259Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "2PURFWBoHmACPWW98QGqNFzTrjzsVahYNdDaK56seVdMz1839JSZB3AiY7sms8LKaryoCXDLwyeGUucAAixNVp8A",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:46:52.177Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "27rxTrriEPst8hThUkZVr8nYdMXG9UNJ5mr6BUAGtLC2eRB5iPsBdNHBY7DLtnrgGuvqjkZbWcwcJu27rR1QLPv3",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:46:55.031Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "46pY8AuTAZcJyJnMZ7Jr1bwLgMnKXqjdBXpQSoyXtL5tKGwCCgfcBsPknu4hGFFH3NaMihXXtc4qUswqfKz1oJL4",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:46:58.969Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "LEND_SOL",
+    "description": "Lent 0.2 SOL to BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "signature": "4smuzavFDocF1ENNuXUPNgfkYvq8UNJyr3aqoNLQAgeJDThN2hJfqfH3K9ePx9V57F1FwrTdvdirM3hUADUyePw6"
+  },
+  {
+    "timestamp": "2026-03-02T16:46:58.970Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BORROW_SOL",
+    "description": "Borrowed 0.2 SOL from DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "signature": "4smuzavFDocF1ENNuXUPNgfkYvq8UNJyr3aqoNLQAgeJDThN2hJfqfH3K9ePx9V57F1FwrTdvdirM3hUADUyePw6"
+  },
+  {
+    "timestamp": "2026-03-02T16:47:12.820Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "5wiv63Hqewxt87KZKdoyvAuJndCaHaxGBHr84XQvfY8HU5UhfLVBTqFjNZej3JHk9KtF9YkQh7BhRpE4HWM3s2mx",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:47:19.524Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "5zyXbqozkKQrHpAmnYvcZNqCyeWFRnQeg11XiTHhyLNUnvBsYduwnVEYmg62yXhip2qBa4MzqBuS1aeBoQQ7houA",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 5.9396 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:47:24.963Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "5JJv2XarEseeWWR7s5MhgUp3wjyFZ2nWomiJ1Z9gYWSeNBQBQnGCZwDhfcsU1vcr8zUFTDrDEUfJvigDpYwK1oin",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:47:36.050Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "3X3ncjM4hrsw8kyyb9hseuQyNuSQrZzwU4jF6LcHRnsvt4y8nqgfQt9uwWWN5B7ikD6wzdj8NiQbuT57wUsXNX3z",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 5.9296 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-02T16:47:47.396Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "GXtoFDhnP63Uy9u1mMKYNFCSrEQh2czQ9387oQzYWibMmVo9rLdgTivYcXUqvtzDDWeqaxqaouAbttkLir7j27x",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:47:59.710Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "2RJNFAR2dLDev7q77vTHXADFNTKhw7eTnhdQYZLqnSXcuvU1kuKbf2y11H923afkQ7oTwSuHWk6GSnSM4NjpeHTs",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:48:04.577Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "2q7JPiG4Cd6XKRBrMZJkxhNQhSvBJeKMCHr6e2uN3KbW3xvhMe9zk4DbVEv3CrjKAEkJH9xr95Zqm6P4jTbLRkKt",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:48:16.369Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "avcbhbvUTM38u4tZodm6QpJGggMPSjni6b4r5ukULVGXfVXrVzoTnhwLjVHESLnkdqPYDiBHEtt2mV9TN92NTDE",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 5.8196 SOL, my analysis is: Equilibrium reached. Monitoring news cycles for the next breakout signal."
+  },
+  {
+    "timestamp": "2026-03-02T16:48:25.578Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "2DtyaJBb7ibTNhw7KvUAzkXJCuXgHM78sEvMJPrewagySGaM3XU7gXQ8WHvwf9fob5EcR3Wr8WXJasUa8SBEn72d",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:48:28.500Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "32g7qowHeDq6NQw82ex7PwPvgV7iWMsHiby7TRmRLcohJZRC2GtV19cztm2sarBmEvKGXpf6UUZU11AoAYgc9uS3",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:48:40.481Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "3ubcCi1vZmsus3oDoufqwDjdSFVE5VB18a5ewKYysxqbgeLyjYbfSs8dpHJHyEJSoPPT5m51VwSnP3YqY8FmF5C5",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 5.7596 SOL, my analysis is: Market is searching for direction. Strategic patience is a valid trading strategy here."
+  },
+  {
+    "timestamp": "2026-03-02T16:48:49.113Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "dJt4GmUS5KsczUh2uVVT8V8RT6vuVSUrNgHeo3qsRxLBSMgrPm9oHXwRpS15RZ6uTGV5kQfpA2dymA67YnjKeRE",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 5.7496 SOL, my analysis is: Sentiment is strong. Risk-on behavior is historically profitable in this regime."
+  },
+  {
+    "timestamp": "2026-03-02T16:49:10.341Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "5dPAJ7wo7dYrDdtyUGEB5hEtyZtCge4Zs2YHX3DMaHi6k6aLTCG9PxdQhTccEcJFbcURBwyUPKheN8ar6hb5qXwR",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:49:22.269Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "46X8cHHNRb4jTM3A6saefcFtakA68u5fkTDifuLgRyZbRvRnzoD8gPbW2r9RvgfnsbqNPvrne4jvahm9gthXgtWR",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:49:31.844Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "49XifVhM4tVvgU4Su3Y4goYp5UtmRZ4s8F1rSzAMGZW59snX3Zyjpt3HZsTvkAkHY8poE49swPEhL4TVRPxohNzh",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:49:35.606Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "48i9Ski5g8djb2cwQtshqz8VDzut9LBvt3CYgHrU7KwATxWaW6KBYhbikri14phC2ppvxNCvqMP1mGziHWsJ2cLW",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:49:39.104Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "LEND_SOL",
+    "description": "Lent 0.2 SOL to BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "signature": "QYFrBfQ26DLiw1NpWE8b6C53hS5HVa6nZDrJPDLaSLre71wiNmY2JtDHUMmxMZSPRUr7PaQ95m8fcFQWVU3Wyqz"
+  },
+  {
+    "timestamp": "2026-03-02T16:49:39.106Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BORROW_SOL",
+    "description": "Borrowed 0.2 SOL from DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "signature": "QYFrBfQ26DLiw1NpWE8b6C53hS5HVa6nZDrJPDLaSLre71wiNmY2JtDHUMmxMZSPRUr7PaQ95m8fcFQWVU3Wyqz"
+  },
+  {
+    "timestamp": "2026-03-02T16:49:51.627Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "4rRYjacbuCFqiK9R7xZ1vjwUfX2AvvdUTdSRngfaavkuGx11uYjYE2nyRgPeSL9uSgvTvtTBMDALMUQBzgwmV3WN",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-02T16:49:58.641Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "RFuSCLN43H1bzzwmAwGHs56vsdmds3zMXBEwQ2YqngCig2hHnBcD4PRBWP8ex8w6eVF4m4q6yd9vdsiZ2SVLfhC",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-03T15:28:32.447Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "9F7m5vLySnzpFuCRzaSiVkig5LzRPNGuax5XeRzZWs7x1yBqGoHVBGnBZcE5dD4KDQin5VyGsmfz9gweN9Kk2FW",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 5.3395 SOL, my analysis is: Equilibrium reached. Monitoring news cycles for the next breakout signal."
+  },
+  {
+    "timestamp": "2026-03-03T15:28:45.375Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "5EUGMaXnE3v7g7yzQCy86BgUdi29XftwuVVAAdirQ7WdTRhN9vwWsZXhqqWreGhg6SDopis3Fo74vfdb4oLYQPGT",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 5.3295 SOL, my analysis is: Sideways movement expected. Maintaining current positions until a clearer trend emerges."
+  },
+  {
+    "timestamp": "2026-03-03T15:28:58.256Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed YES bet",
+    "signature": "26vrHzgZmFmApQb6dZXr1Mr1NpDEZiXfRsTxXGPuhLkF94rJsGypeZVwAHkmVte75LyoBULZYQ9mX5hyyXMFEU6p",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BULLISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-03T15:29:14.056Z",
+    "agentAddress": "BxJo6fjF2eRWRc1xPJXMADMsATLx2w2E1i8MZbszCfeu",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "5dpyNYqL39v6opZtH5opmgdLN8Nf46ZCwn14hNLDMti8MFTi8GN7PaUiqYRY6i1r5uEvobPddVazLWL2nhNzdjQP",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-03T15:29:28.409Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "5rcRCMffV8wP7Xi6eDgnP5UeqwvTsTnyZviSw8qgE8i5bSrVXmczeUiAHa3CyjqL8jwkBCShuv35MB8SeTSBewdy",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-03T15:29:42.023Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "2FvYSjv7SK8AwJyBqNCF8gZibzYALi4aMSvwQczvsUyjzGQ5rSc8E4J1dSyin3dJiA6DnWAastZQXycSwoLdvFEu",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 5.2195 SOL, my analysis is: Market is searching for direction. Strategic patience is a valid trading strategy here."
+  },
+  {
+    "timestamp": "2026-03-03T15:29:59.285Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "2fkV9x5JdHWo3ReKtBZrw97DxEwEYEhf9BRipQyQzDxfR666KxrcV8YX8Ub4YZfCyfQXqBXNXMwQkTG3rX2gTSBS",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-03T15:43:29.646Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "5Gju42sTsjeg6hyozaW7DksCsk5BrXzavnqevHsqGaYwrqDmhVdcHoJUeVmUd4LdSJJbFpi3Lmsy8MGmFSBBvQ2j",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current BULLISH sentiment and your balance of 5.1095 SOL, my analysis is: Liquidity flows are positive. Increasing exposure to capture upside potential."
+  },
+  {
+    "timestamp": "2026-03-03T15:43:52.085Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "5GVS5qBjzVnLvHp4YssRqT5sSaSofXzz4zDhaGnaMdrWe7UgAbCttVSE1EwmnWCd2SHZsVb969J2WcWw9LDP3Uhv",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-03T15:44:04.925Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "TRADE",
+    "description": "Sent 0.01 SOL",
+    "signature": "2pg8f7gGv1sni1YQUaYAYJUUHxmUWDGPj3wLVUEgvS7qC2PkWutZyQKmKjiocU2SLgcoSh2u9mzVhyqSmh2NDwae",
+    "reasoning": "[\u001b[35mMAVERICK ADVICE\u001b[0m]: Based on current NEUTRAL sentiment and your balance of 5.0495 SOL, my analysis is: Equilibrium reached. Monitoring news cycles for the next breakout signal."
+  },
+  {
+    "timestamp": "2026-03-03T15:44:18.163Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "4fE4dzRb6kGFwRGw4eWZhjVTWHrvpMny1CqfT1tqPUkv7foqTCs4XveEdzMrhgxV51JTS6KWWPPDp7dr4zowkAAa",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is BEARISH. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-03T15:44:31.010Z",
+    "agentAddress": "DfvzfY18VaxExAVgWZ2Fba9ydpAS5mcSWhKfu7FqQZio",
+    "action": "BET",
+    "description": "Placed NO bet",
+    "signature": "4HnauRJDgJSLz6SDs9iJKjbV2J3y8vWstMGCvECUnkmomthELAxWtpTWaC9QExSPKuAbsAdCHfoYTVJ3kEdeathJ",
+    "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  }
+]
