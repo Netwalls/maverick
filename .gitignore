@@ -41,6 +41,7 @@ coverage/
 
 # Misc caches and temp
 .cache/
+.kalshi-cache.json
 .parcel-cache/
 .turbo/
 .npm/

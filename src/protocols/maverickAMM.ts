@@ -1,4 +1,7 @@
+import { Connection, PublicKey } from '@solana/web3.js';
 import { WalletManager } from '../core/walletManager.js';
+import { TransactionSigner } from '../core/transactionSigner.js';
+import { TokenService } from '../core/tokenService.js';
 import { TerminalUtils } from '../utils/terminalUtils.js';
 import { HistoryProvider } from '../utils/historyProvider.js';
 import * as fs from 'fs';
@@ -13,7 +16,13 @@ export class MaverickAMM {
     private totalShares: number = 0;
     private statePath = path.join(process.cwd(), 'amm.json');
 
-    constructor(private history: HistoryProvider) {
+    constructor(
+        private connection: Connection,
+        private signer: TransactionSigner,
+        private history: HistoryProvider,
+        private vaultWallet: WalletManager,
+        private usdcMint: PublicKey
+    ) {
         this.loadState();
     }
 
@@ -42,12 +51,25 @@ export class MaverickAMM {
     }
 
     /**
-     * Deposit SOL and USDC to provide liquidity
+     * Deposit SOL and USDC to provide liquidity (real on-chain transfers)
      */
     public async depositLiquidity(wallet: WalletManager, solAmount: number, usdcAmount: number): Promise<void> {
+        const mint = this.usdcMint;
         const address = wallet.getPublicKey().toBase58();
 
-        // Initial deposit
+        // 1. Real SOL transfer: agent wallet → vault
+        const solSig = await this.signer.sendTransfer(wallet, this.vaultWallet.getPublicKey(), solAmount);
+
+        // 2. Real USDC SPL transfer: agent ATA → vault ATA
+        const usdcSig = await TokenService.transferTokens(
+            this.connection,
+            mint,
+            wallet.getKeypair(),
+            this.vaultWallet.getPublicKey(),
+            usdcAmount
+        );
+
+        // 3. Bookkeeping after both txs confirmed
         if (this.totalShares === 0) {
             this.reserveSOL = solAmount;
             this.reserveUSDC = usdcAmount;
@@ -55,7 +77,6 @@ export class MaverickAMM {
             this.totalShares = Math.sqrt(solAmount * usdcAmount);
             this.lpShares.set(address, this.totalShares);
         } else {
-            // Maintain ratio
             const shareRatio = Math.min(
                 (solAmount * this.totalShares) / this.reserveSOL,
                 (usdcAmount * this.totalShares) / this.reserveUSDC
@@ -77,7 +98,8 @@ export class MaverickAMM {
             timestamp: new Date().toISOString(),
             agentAddress: address,
             action: 'AMM_DEPOSIT',
-            description: `Provided ${solAmount} SOL and ${usdcAmount} USDC as liquidity to Maverick AMM.`
+            description: `Provided ${solAmount} SOL and ${usdcAmount} USDC as liquidity to Maverick AMM.`,
+            signature: solSig,
         });
     }
 
@@ -91,14 +113,10 @@ export class MaverickAMM {
         const amountAfterFee = amount - fee;
 
         if (input === 'SOL') {
-            // swapping SOL for USDC
-            // (reserveSOL + amountAfterFee) * (reserveUSDC - output) = k
-            // output = reserveUSDC - k / (reserveSOL + amountAfterFee)
             const newReserveSOL = this.reserveSOL + amountAfterFee;
             const newReserveUSDC = this.k / newReserveSOL;
             return Math.max(0, this.reserveUSDC - newReserveUSDC);
         } else {
-            // swapping USDC for SOL
             const newReserveUSDC = this.reserveUSDC + amountAfterFee;
             const newReserveSOL = this.k / newReserveUSDC;
             return Math.max(0, this.reserveSOL - newReserveSOL);
@@ -106,9 +124,10 @@ export class MaverickAMM {
     }
 
     /**
-     * Execute a swap against the pool
+     * Execute a swap against the pool (real on-chain transfers)
      */
     public async swap(wallet: WalletManager, input: 'SOL' | 'USDC', amount: number): Promise<number> {
+        const mint = this.usdcMint;
         const output = this.getSwapQuote(input, amount);
         const address = wallet.getPublicKey().toBase58();
 
@@ -118,16 +137,38 @@ export class MaverickAMM {
         }
 
         if (input === 'SOL') {
+            // SOL → USDC: agent sends SOL to vault, vault sends USDC to agent
+            const solSig = await this.signer.sendTransfer(wallet, this.vaultWallet.getPublicKey(), amount);
+
+            // Vault sends USDC to agent (vault signs SPL transfer)
+            const usdcSig = await TokenService.transferTokens(
+                this.connection,
+                mint,
+                this.vaultWallet.getKeypair(),
+                wallet.getPublicKey(),
+                output
+            );
+
             this.reserveSOL += amount;
             this.reserveUSDC -= output;
         } else {
+            // USDC → SOL: agent sends USDC to vault, vault sends SOL to agent
+            const usdcSig = await TokenService.transferTokens(
+                this.connection,
+                mint,
+                wallet.getKeypair(),
+                this.vaultWallet.getPublicKey(),
+                amount
+            );
+
+            // Vault sends SOL to agent (vault signs)
+            const solSig = await this.signer.sendTransfer(this.vaultWallet, wallet.getPublicKey(), output);
+
             this.reserveUSDC += amount;
             this.reserveSOL -= output;
         }
 
-        // Constant product update (k grows slightly due to fees)
         this.k = this.reserveSOL * this.reserveUSDC;
-
         this.persistState();
         TerminalUtils.printSuccess(`AMM SWAP: ${address.slice(0, 8)} swapped ${amount} ${input} for ${output.toFixed(4)} ${input === 'SOL' ? 'USDC' : 'SOL'}`);
 

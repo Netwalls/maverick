@@ -3,10 +3,12 @@ import { WalletManager } from './core/walletManager.js';
 import { MaverickAgent } from './agents/maverickAgent.js';
 import { AgentRegistry } from './core/agentRegistry.js';
 import { MaverickBank } from './protocols/maverickBank.js';
+import { MaverickAMM } from './protocols/maverickAMM.js';
 import { CommunicationModule } from './core/communicationModule.js';
 import { TransactionSigner } from './core/transactionSigner.js';
 import { HistoryProvider } from './utils/historyProvider.js';
 import { TerminalUtils } from './utils/terminalUtils.js';
+import { VaultManager } from './core/vaultManager.js';
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 
@@ -22,8 +24,13 @@ async function main() {
     const history = new HistoryProvider(process.cwd());
     const signer = new TransactionSigner(connection);
     const registry = new AgentRegistry();
-    const bank = new MaverickBank(signer, history);
     const comms = new CommunicationModule(signer, history);
+
+    // Vault: load or create keypair. Uses Circle's official devnet USDC.
+    const vaultManager = await VaultManager.loadOrCreate(connection);
+
+    const amm = new MaverickAMM(connection, signer, history, vaultManager.getWallet(), vaultManager.getUSDCMint());
+    const bank = new MaverickBank(connection, signer, history, vaultManager.getWallet(), amm);
 
     // Initial signals cleanup
     if (fs.existsSync('signals.json')) fs.writeFileSync('signals.json', '[]');
@@ -32,10 +39,10 @@ async function main() {
     TerminalUtils.printStep('Discovery', 'Scanning for Mavericks in .env...');
     const agentsToRun: { name: string; agent: MaverickAgent; wallet: WalletManager }[] = [];
 
-    // Keys to look for (Backwards compatibility + Dynamic)
-    const envKeys = Object.keys(process.env).filter(key => key.endsWith('_PRIVATE_KEY'));
+    const envKeys = Object.keys(process.env).filter(
+        key => key.endsWith('_PRIVATE_KEY') && key !== 'VAULT_PRIVATE_KEY'
+    );
 
-    // Ensure we have at least the core 3 for the demo if none are set
     if (envKeys.length === 0) {
         TerminalUtils.printAdvice('Warning: No agents found. Initializing defaults...');
         envKeys.push('AGENT_PRIVATE_KEY', 'BETA_PRIVATE_KEY', 'GAMMA_PRIVATE_KEY');
@@ -47,7 +54,6 @@ async function main() {
         const name = key.replace('_PRIVATE_KEY', '').replace('AGENT', 'Alpha');
         const wallet = new WalletManager(connection, process.env[key], key);
 
-        // Every Maverick is now a fully equipped agent!
         const agent = new MaverickAgent(connection, wallet, target, bank, name);
 
         registry.registerAgent(name, agent);

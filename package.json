@@ -5,27 +5,35 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "start": "tsx src/index.ts",
-    "dev": "nodemon --exec tsx src/index.ts",
+    "start": "tsx src/ui/main.tsx",
+    "maverick": "tsx src/ui/main.tsx",
+    "start:headless": "tsx src/index.ts",
     "invite": "tsx src/invite.ts",
     "command": "tsx src/utils/commander.ts",
     "history": "tsx src/utils/auditor.ts",
-    "shell": "tsx src/utils/shell.ts",
-    "deck": "tsx src/utils/commandDeck.ts",
-    "maverick": "tsx src/utils/commandDeck.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google/genai": "^1.44.0",
+    "@solana/spl-token": "^0.4.14",
     "@solana/web3.js": "^1.91.1",
     "bs58": "^5.0.0",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "ink": "^5.2.1",
+    "ink-select-input": "^6.2.0",
+    "ink-spinner": "^5.0.0",
+    "ink-text-input": "^6.0.0",
+    "node-record-lpcm16": "^1.0.1",
+    "react": "^18.3.1",
+    "wav": "^1.0.2"
   },
   "devDependencies": {
     "@types/bs58": "^4.0.4",
     "@types/node": "^20.12.7",
+    "@types/react": "^18.3.28",
     "tsx": "^4.7.1",
     "typescript": "^5.4.5"
   }

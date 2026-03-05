@@ -1,3 +1,6 @@
+import * as fs from 'fs';
+import * as path from 'path';
+
 export interface KalshiMarket {
     ticker: string;
     event_ticker: string;
@@ -24,11 +27,40 @@ export class KalshiService {
     private static marketsCache: { data: KalshiMarket[], timestamp: number } | null = null;
     private static eventsCache: { data: Map<string, KalshiEvent>, timestamp: number } | null = null;
     private static CACHE_TTL = 300000; // 5 minutes
+    private static DISK_CACHE_PATH = path.join(process.cwd(), '.kalshi-cache.json');
 
     private static fetchInProgress: Promise<KalshiMarket[]> | null = null;
+    private static diskLoaded = false;
 
     public static isLoading(): boolean {
         return this.fetchInProgress !== null && this.marketsCache === null;
+    }
+
+    /** Load disk cache into memory — call once at boot for instant market data */
+    public static loadDiskCache(): void {
+        if (this.diskLoaded) return;
+        this.diskLoaded = true;
+        try {
+            if (fs.existsSync(this.DISK_CACHE_PATH)) {
+                const raw = JSON.parse(fs.readFileSync(this.DISK_CACHE_PATH, 'utf8'));
+                if (raw.data?.length > 0 && raw.timestamp) {
+                    this.marketsCache = { data: raw.data, timestamp: raw.timestamp };
+                }
+            }
+        } catch { /* ignore corrupt cache */ }
+    }
+
+    private static saveDiskCache(data: KalshiMarket[], timestamp: number): void {
+        try {
+            fs.writeFileSync(this.DISK_CACHE_PATH, JSON.stringify({ data, timestamp }));
+        } catch { /* best-effort */ }
+    }
+
+    /** Prefetch markets in the background. Call at app boot. */
+    public static prefetch(): void {
+        this.loadDiskCache();
+        // Fire-and-forget background refresh
+        void this.getMarkets();
     }
 
     // ─── Public API ───────────────────────────────────────────────────────────
@@ -38,7 +70,15 @@ export class KalshiService {
         if (this.marketsCache && (now - this.marketsCache.timestamp) < this.CACHE_TTL) {
             return this.marketsCache.data;
         }
-        if (this.fetchInProgress) return this.fetchInProgress;
+        // Return stale cache immediately and refresh in background
+        if (this.marketsCache && !this.fetchInProgress) {
+            this.fetchInProgress = this.fetchAll(now);
+            return this.marketsCache.data;
+        }
+        if (this.fetchInProgress) {
+            // If we have stale cache, return it; otherwise wait for fetch
+            return this.marketsCache?.data ?? this.fetchInProgress;
+        }
         this.fetchInProgress = this.fetchAll(now);
         return this.fetchInProgress;
     }
@@ -95,20 +135,36 @@ export class KalshiService {
             });
 
             this.marketsCache = { data: enriched, timestamp };
+            this.saveDiskCache(enriched, timestamp);
             this.fetchInProgress = null;
             return enriched;
         } catch (error) {
             this.fetchInProgress = null;
-            return [];
+            // On failure, return stale cache if available
+            return this.marketsCache?.data ?? [];
+        }
+    }
+
+    private static MAX_PAGES = 2; // 2 pages = ~2000 markets, plenty
+    private static FETCH_TIMEOUT = 6000; // 6s per request
+
+    private static async fetchWithTimeout(url: string): Promise<Response> {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), this.FETCH_TIMEOUT);
+        try {
+            return await fetch(url, { signal: controller.signal });
+        } finally {
+            clearTimeout(timer);
         }
     }
 
     private static async fetchAllMarkets(): Promise<KalshiMarket[]> {
         const all: KalshiMarket[] = [];
         let cursor = '';
-        while (true) {
+        let pages = 0;
+        while (pages < this.MAX_PAGES) {
             const url = `${this.BASE_URL}/markets?limit=1000&status=open${cursor ? `&cursor=${cursor}` : ''}`;
-            const response = await fetch(url);
+            const response = await this.fetchWithTimeout(url);
             if (!response.ok) break;
             const data = await response.json() as any;
             const batch = (data.markets || []).map((m: any) => ({
@@ -124,7 +180,8 @@ export class KalshiService {
             }));
             all.push(...batch);
             cursor = data.cursor;
-            if (!cursor || all.length > 50000) break;
+            pages++;
+            if (!cursor) break;
         }
         return all;
     }
@@ -137,9 +194,10 @@ export class KalshiService {
 
         const map = new Map<string, KalshiEvent>();
         let cursor = '';
-        while (true) {
+        let pages = 0;
+        while (pages < this.MAX_PAGES) {
             const url = `${this.BASE_URL}/events?limit=200&status=open${cursor ? `&cursor=${cursor}` : ''}`;
-            const response = await fetch(url);
+            const response = await this.fetchWithTimeout(url);
             if (!response.ok) break;
             const data = await response.json() as any;
             for (const e of (data.events || [])) {
@@ -152,10 +210,15 @@ export class KalshiService {
                 });
             }
             cursor = data.cursor;
-            if (!cursor || map.size > 10000) break;
+            pages++;
+            if (!cursor) break;
         }
 
         this.eventsCache = { data: map, timestamp };
         return map;
+    }
+
+    public static getIndexingProgress(): number {
+        return this.marketsCache?.data.length ?? 0;
     }
 }

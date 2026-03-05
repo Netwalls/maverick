@@ -1602,5 +1602,71 @@
     "description": "Placed NO bet",
     "signature": "4HnauRJDgJSLz6SDs9iJKjbV2J3y8vWstMGCvECUnkmomthELAxWtpTWaC9QExSPKuAbsAdCHfoYTVJ3kEdeathJ",
     "reasoning": "[PREDICTION SCAN]: Sentiment is NEUTRAL. DFlow pricing indicates favorable odds."
+  },
+  {
+    "timestamp": "2026-03-05T15:06:48.676Z",
+    "agentAddress": "EMuZbgr92wfEZsHNCExEejEPkEQEM82VQP54oM5D5sdT",
+    "action": "BANK_DEPOSIT",
+    "description": "Deposited 0.5 SOL to Maverick Bank Vault"
+  },
+  {
+    "timestamp": "2026-03-05T15:06:48.680Z",
+    "agentAddress": "8e2sqK69FSAf193r1wt9ADbVXDaZ3eNAAZGcFBzfoVMX",
+    "action": "BANK_BORROW",
+    "description": "Borrowed 0.3 SOL from Bank Vault. Payback Fee: 0.015 SOL"
+  },
+  {
+    "timestamp": "2026-03-05T15:06:48.682Z",
+    "agentAddress": "EMuZbgr92wfEZsHNCExEejEPkEQEM82VQP54oM5D5sdT",
+    "action": "AMM_DEPOSIT",
+    "description": "Provided 0.5 SOL and 72.5 USDC as liquidity to Maverick AMM."
+  },
+  {
+    "timestamp": "2026-03-05T15:06:48.683Z",
+    "agentAddress": "8e2sqK69FSAf193r1wt9ADbVXDaZ3eNAAZGcFBzfoVMX",
+    "action": "AMM_SWAP",
+    "description": "Swapped 0.1 SOL for 12.0531 USDC via Maverick AMM."
+  },
+  {
+    "timestamp": "2026-03-05T15:06:48.684Z",
+    "agentAddress": "8e2sqK69FSAf193r1wt9ADbVXDaZ3eNAAZGcFBzfoVMX",
+    "action": "BANK_PAYBACK",
+    "description": "Paid back loan of 0.3 SOL with 0.015 SOL fee."
+  },
+  {
+    "timestamp": "2026-03-05T16:12:36.926Z",
+    "agentAddress": "EMuZbgr92wfEZsHNCExEejEPkEQEM82VQP54oM5D5sdT",
+    "action": "BET",
+    "description": "Placed YES bet on KXMVECROSSCATEGORY-S2026DF79DB86704-01BDAD87FFB for 0.58 SOL (81.2 shares @ $1.000)",
+    "signature": "2CAXvHKYYvS6LnzW7QQSkVpqYopLY9GAm5gbynBfV1dLyG4WgLoaWE9YbbAwfzVLt2AsoYNQoKMohCF4MFmb9UJ4",
+    "reasoning": "Manual selection"
+  },
+  {
+    "timestamp": "2026-03-05T16:49:18.383Z",
+    "agentAddress": "EMuZbgr92wfEZsHNCExEejEPkEQEM82VQP54oM5D5sdT",
+    "action": "AMM_SWAP",
+    "description": "Swapped 0.01 SOL for 0.9880 USDC via Maverick AMM."
+  },
+  {
+    "timestamp": "2026-03-05T16:50:00.558Z",
+    "agentAddress": "EMuZbgr92wfEZsHNCExEejEPkEQEM82VQP54oM5D5sdT",
+    "action": "BANK_DEPOSIT",
+    "description": "Deposited 0.04 SOL to Maverick Bank Vault",
+    "signature": "2bhUAerPdobnFVrkzbjQmiakJaq75hTg6LVxQFzfqxLqxjxAawLkgy6qiHQUcWdqgEo2o2tsTCF8qDv7ja9BhzXM"
+  },
+  {
+    "timestamp": "2026-03-05T16:50:29.836Z",
+    "agentAddress": "EMuZbgr92wfEZsHNCExEejEPkEQEM82VQP54oM5D5sdT",
+    "action": "BANK_WITHDRAW",
+    "description": "Withdrew 0.04 SOL from Maverick Bank.",
+    "signature": "ZSr5ubPFPqc4opMsPY2hfHodvGMeVj1KvWqkFjYC96DtSmvfFsjJs4wemic33qPdzMgRD5KguHB9DFqx3PSmb1B"
+  },
+  {
+    "timestamp": "2026-03-05T16:53:31.949Z",
+    "agentAddress": "EMuZbgr92wfEZsHNCExEejEPkEQEM82VQP54oM5D5sdT",
+    "action": "BET",
+    "description": "Placed YES bet on KXMVECROSSCATEGORY-S2026F61E729C864-36C9363A1A8 for 0.004 SOL (0.6 shares @ $1.000)",
+    "signature": "4b2QFgDnk5FuAxbPLmABDeE87jCTCgdwXUBFKaCFxG7T9CoYSJrG2AEj74wNNHwb7PMW9G3QTjzSNcMcdmCanwBq",
+    "reasoning": "AI-suggested trade"
   }
 ]

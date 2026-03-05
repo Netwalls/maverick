@@ -1,3 +1,4 @@
+import { Connection } from '@solana/web3.js';
 import { WalletManager } from '../core/walletManager.js';
 import { TransactionSigner } from '../core/transactionSigner.js';
 import { HistoryProvider } from '../utils/historyProvider.js';
@@ -21,8 +22,14 @@ export class MaverickBank {
     private contributionAmount: number = 0.1;
     public amm: MaverickAMM;
 
-    constructor(private signer: TransactionSigner, private history: HistoryProvider) {
-        this.amm = new MaverickAMM(history);
+    constructor(
+        private connection: Connection,
+        private signer: TransactionSigner,
+        private history: HistoryProvider,
+        private vaultWallet: WalletManager,
+        amm: MaverickAMM
+    ) {
+        this.amm = amm;
     }
 
     public addParticipant(wallet: WalletManager) {
@@ -30,16 +37,23 @@ export class MaverickBank {
     }
 
     public async deposit(wallet: WalletManager, amount: number): Promise<void> {
-        TerminalUtils.printStep('Bank', `Maverick ${wallet.getPublicKey().toBase58().slice(0, 8)} depositing ${amount} SOL to Vault.`);
+        const address = wallet.getPublicKey().toBase58();
+        TerminalUtils.printStep('Bank', `Maverick ${address.slice(0, 8)} depositing ${amount} SOL to Vault.`);
+
+        // Real on-chain transfer: agent wallet → vault
+        const sig = await this.signer.sendTransfer(wallet, this.vaultWallet.getPublicKey(), amount);
+
+        // Bookkeeping only after confirmed tx
         this.vaultBalance += amount;
-        const current = this.contributions.get(wallet.getPublicKey().toBase58()) || 0;
-        this.contributions.set(wallet.getPublicKey().toBase58(), current + amount);
+        const current = this.contributions.get(address) || 0;
+        this.contributions.set(address, current + amount);
 
         await this.history.recordAction({
             timestamp: new Date().toISOString(),
-            agentAddress: wallet.getPublicKey().toBase58(),
+            agentAddress: address,
             action: 'BANK_DEPOSIT',
             description: `Deposited ${amount} SOL to Maverick Bank Vault`,
+            signature: sig,
         });
     }
 
@@ -56,6 +70,9 @@ export class MaverickBank {
             return false;
         }
 
+        // Real on-chain transfer: vault → agent wallet (vault signs)
+        const sig = await this.signer.sendTransfer(this.vaultWallet, wallet.getPublicKey(), amount);
+
         TerminalUtils.printSuccess(`LOAN GRANTED: ${amount} SOL to ${address.slice(0, 8)}`);
         this.vaultBalance -= amount;
 
@@ -71,6 +88,7 @@ export class MaverickBank {
             agentAddress: address,
             action: 'BANK_BORROW',
             description: `Borrowed ${amount} SOL from Bank Vault. Payback Fee: ${amount * this.interestFee} SOL`,
+            signature: sig,
         });
 
         return true;
@@ -85,6 +103,9 @@ export class MaverickBank {
         const totalPayback = loan.amount + loan.fee;
         TerminalUtils.printStep('Bank', `Maverick ${address.slice(0, 8)} paying back loan: ${totalPayback} SOL (incl. fee).`);
 
+        // Real on-chain transfer: agent wallet → vault
+        const sig = await this.signer.sendTransfer(wallet, this.vaultWallet.getPublicKey(), totalPayback);
+
         this.vaultBalance += totalPayback;
         this.loans.delete(address);
 
@@ -93,21 +114,8 @@ export class MaverickBank {
             agentAddress: address,
             action: 'BANK_PAYBACK',
             description: `Paid back loan of ${loan.amount} SOL with ${loan.fee} SOL fee.`,
+            signature: sig,
         });
-    }
-
-    public async collectContributions(): Promise<void> {
-        TerminalUtils.printStep('Bank', `Collecting ${this.contributionAmount} SOL for Vault Liquidity...`);
-        for (const p of this.participants) {
-            const address = p.getPublicKey().toBase58();
-            const balance = await p.getBalance();
-            if (balance >= this.contributionAmount) {
-                this.vaultBalance += this.contributionAmount;
-                const current = this.contributions.get(address) || 0;
-                this.contributions.set(address, current + this.contributionAmount);
-                TerminalUtils.printStep(address.slice(0, 8), `Contribution committed.`);
-            }
-        }
     }
 
     public async withdraw(wallet: WalletManager, amount?: number): Promise<boolean> {
@@ -131,6 +139,9 @@ export class MaverickBank {
             return false;
         }
 
+        // Real on-chain transfer: vault → agent wallet (vault signs)
+        const sig = await this.signer.sendTransfer(this.vaultWallet, wallet.getPublicKey(), withdrawAmount);
+
         TerminalUtils.printSuccess(`WITHDRAWAL: ${withdrawAmount} SOL returned to Maverick ${address.slice(0, 8)}`);
         this.vaultBalance -= withdrawAmount;
         this.contributions.set(address, contribution - withdrawAmount);
@@ -140,13 +151,30 @@ export class MaverickBank {
             agentAddress: address,
             action: 'BANK_WITHDRAW',
             description: `Withdrew ${withdrawAmount} SOL from Maverick Bank.`,
+            signature: sig,
         });
 
         return true;
     }
 
-    public getContribution(address: string): number {
-        return this.contributions.get(address) || 0;
+    public async collectContributions(): Promise<void> {
+        TerminalUtils.printStep('Bank', `Collecting ${this.contributionAmount} SOL for Vault Liquidity...`);
+        for (const p of this.participants) {
+            const address = p.getPublicKey().toBase58();
+            const balance = await p.getBalance();
+            if (balance >= this.contributionAmount + 0.01) { // leave room for tx fee
+                try {
+                    // Real on-chain transfer: participant → vault
+                    await this.signer.sendTransfer(p, this.vaultWallet.getPublicKey(), this.contributionAmount);
+                    this.vaultBalance += this.contributionAmount;
+                    const current = this.contributions.get(address) || 0;
+                    this.contributions.set(address, current + this.contributionAmount);
+                    TerminalUtils.printStep(address.slice(0, 8), `Contribution committed.`);
+                } catch {
+                    TerminalUtils.printStep(address.slice(0, 8), `Contribution skipped (tx failed).`);
+                }
+            }
+        }
     }
 
     public async payout(): Promise<void> {
@@ -155,15 +183,36 @@ export class MaverickBank {
 
         const reward = 0.2; // Fixed payout from vault interests
         if (this.vaultBalance >= reward) {
-            TerminalUtils.printSuccess(`SAVINGS REWARD: Maverick ${recipient.getPublicKey().toBase58().slice(0, 8)} receives ${reward} SOL bounty.`);
-            this.vaultBalance -= reward;
-            // Record payout...
+            try {
+                // Real on-chain transfer: vault → recipient (vault signs)
+                const sig = await this.signer.sendTransfer(this.vaultWallet, recipient.getPublicKey(), reward);
+                TerminalUtils.printSuccess(`SAVINGS REWARD: Maverick ${recipient.getPublicKey().toBase58().slice(0, 8)} receives ${reward} SOL bounty.`);
+                this.vaultBalance -= reward;
+
+                await this.history.recordAction({
+                    timestamp: new Date().toISOString(),
+                    agentAddress: recipient.getPublicKey().toBase58(),
+                    action: 'BANK_PAYOUT',
+                    description: `Received ${reward} SOL savings reward from vault.`,
+                    signature: sig,
+                });
+            } catch {
+                TerminalUtils.printStep('Bank', 'Payout failed (tx error).');
+            }
         }
         this.currentIndex = (this.currentIndex + 1) % this.participants.length;
     }
 
+    public getContribution(address: string): number {
+        return this.contributions.get(address) || 0;
+    }
+
     public getVaultBalance(): number {
         return this.vaultBalance;
+    }
+
+    public async getVaultBalanceOnChain(): Promise<number> {
+        return this.vaultWallet.getBalance();
     }
 
     public getOutstandingLoan(address: string): Loan | undefined {
