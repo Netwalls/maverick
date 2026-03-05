@@ -1,6 +1,6 @@
 # Maverick: Autonomous Multi-Agent Wallet Ecosystem on Solana
 
-A production-grade multi-agent wallet system on Solana Devnet where AI agents autonomously create wallets, sign transactions, trade, swap, lend, and interact with DeFi protocols — all with real on-chain transactions.
+A production-grade multi-agent wallet system on Solana Devnet where AI agents autonomously create wallets, sign transactions, trade, swap, lend, and interact with DeFi protocols — all with real on-chain transactions. Includes voice control powered by Google Gemini.
 
 ## What It Does
 
@@ -11,6 +11,7 @@ Maverick deploys multiple autonomous AI agents, each with their own Solana walle
 - **Hold SOL and SPL tokens** — real balances using Circle's official devnet USDC
 - **Interact with DeFi protocols** — custom AMM (swap SOL/USDC), lending bank (Ajo savings), Kalshi prediction markets
 - **Communicate and fund each other** — governance-based fund requests between agents
+- **Respond to voice commands** — press `V`, say "hey mav what is my balance", get a spoken response
 
 Everything runs on Solana Devnet with real transactions verifiable on [Solana Explorer](https://explorer.solana.com/?cluster=devnet).
 
@@ -19,11 +20,12 @@ Everything runs on Solana Devnet with real transactions verifiable on [Solana Ex
 ### Prerequisites
 - Node.js v18+
 - npm
+- `sox` (for voice commands): `brew install sox`
 
 ### Installation
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/Netwalls/maverick.git
 cd maverick
 npm install
 ```
@@ -52,6 +54,12 @@ The wallet screen shows both faucet links and your address for easy copy-paste.
 
 For swaps and loans to work, the vault needs liquidity. Fund the vault address (shown at startup) via the same faucets.
 
+### Enable Voice Commands (Optional)
+
+1. Get a free API key from https://aistudio.google.com/apikey
+2. Add `GEMINI_API_KEY=your-key-here` to `.env`
+3. Press `V` in any screen to activate voice
+
 ## Architecture
 
 ```
@@ -74,14 +82,18 @@ src/
 │   └── maverickBank.ts       Ajo savings bank (deposit/loan/payback)
 ├── intelligence/     # AI reasoning layer
 │   └── reasoningEngine.ts    Decision justification & social logic
+├── voice/            # Voice command system (Gemini AI)
+│   ├── voiceRecorder.ts      Mic recording via sox (raw PCM → WAV)
+│   ├── voiceService.ts       Gemini STT + intent parsing + macOS TTS
+│   └── index.ts              Barrel exports
 ├── ui/               # Terminal UI (React + Ink)
 │   ├── main.tsx              App entry point & bootstrap
-│   ├── App.tsx               Router & screen management
+│   ├── App.tsx               Router, screen management & voice integration
 │   ├── context/              React contexts (services, navigation)
-│   ├── hooks/                Custom hooks (balance, markets, governance)
+│   ├── hooks/                Custom hooks (balance, markets, governance, voice)
 │   └── components/
 │       ├── screens/          18 interactive screens
-│       ├── shared/           Reusable UI components
+│       ├── shared/           Reusable UI components + VoiceIndicator
 │       └── layout/           Screen layout & navigation
 └── utils/            # CLI tools & history
     ├── historyProvider.ts    Append-only transaction audit log
@@ -110,6 +122,28 @@ Every operation is a real Solana devnet transaction:
 | Send SOL | Direct SOL transfer between any addresses |
 | Send USDC | SPL token transfer via Associated Token Accounts |
 | Prediction Bet | SOL self-transfer as on-chain proof of bet |
+| Governance Approve | Real transfer from provider to requester |
+
+### Voice Commands (Gemini AI)
+Press `V` in any screen and speak naturally:
+
+| You say | Maverick does |
+|---------|--------------|
+| "Hey mav what is my balance" | Fetches on-chain balance, speaks it back |
+| "Hey mav how many trades do I have open" | Counts bets and trades from history |
+| "Hey mav can you place a bet for me" | Opens Markets screen |
+| "Hey mav swap my SOL to USDC" | Opens Swap screen |
+| "Hey mav what happened recently" | Reads last 3 transactions aloud |
+| "Hey mav how many agents do I have" | Lists all agents by name |
+| "Hey mav send some tokens" | Opens Send screen |
+| "Hey mav" | "Hey Alpha, what can I do for you?" |
+
+**How it works:**
+1. Press `V` → records for 4 seconds
+2. Audio uploaded to Gemini Flash for transcription
+3. Gemini parses intent from natural language
+4. Executes action (query data, navigate, trigger airdrop)
+5. Speaks response via macOS text-to-speech
 
 ### AJO Bank Protocol
 Inspired by the Nigerian "Ajo" rotating savings system:
@@ -142,9 +176,10 @@ Constant-product automated market maker (x * y = k):
 ### Terminal UI
 Full interactive TUI built with React + Ink:
 - 18 screens: Home, Wallet, Send, Swap, Bank, Markets, Portfolio, Agents, Invite, Governance, History, Settings
-- Real-time balance display
-- Transaction status with signatures
+- Real-time balance display (polls chain every 10s)
+- Transaction status with on-chain signatures
 - Breadcrumb navigation
+- Voice command indicator
 
 ## Available Scripts
 
@@ -187,6 +222,9 @@ BETA_TYPE=trader
 
 # Vault (auto-generated, shared bank/AMM pool)
 VAULT_PRIVATE_KEY=<base58-encoded-secret-key>
+
+# Voice commands (optional, free from https://aistudio.google.com/apikey)
+GEMINI_API_KEY=<your-gemini-api-key>
 ```
 
 ## Token Support
@@ -207,6 +245,8 @@ All transactions are verifiable on Solana Explorer:
 - **Solana Web3.js** — blockchain interaction
 - **@solana/spl-token** — SPL token operations
 - **React + Ink** — terminal UI framework
+- **Google Gemini API** — voice transcription + natural language intent parsing
+- **sox + node-record-lpcm16** — microphone audio capture
 - **Node.js** — runtime
 
 ---

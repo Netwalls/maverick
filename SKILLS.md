@@ -110,7 +110,27 @@ This document describes the on-chain capabilities available to Maverick AI agent
 - Market sentiment analysis for prediction markets
 - Financial advice generation based on portfolio state
 
-## 11. Audit Trail
+## 11. Voice Commands
+
+**Skill**: `voice_control`
+**Files**: `src/voice/voiceRecorder.ts`, `src/voice/voiceService.ts`, `src/ui/hooks/useVoice.ts`
+
+- Press `V` to activate — records for 4 seconds, auto-processes
+- Speech-to-text via Google Gemini Flash (free tier)
+- Natural language intent parsing via Gemini — understands any phrasing
+- Supported voice commands:
+  - **Query balance**: "Hey mav what is my balance"
+  - **Count trades**: "Hey mav how many trades do I have open"
+  - **Recent activity**: "Hey mav what happened recently"
+  - **Place bet**: "Hey mav can you place a bet for me"
+  - **Navigate**: "Hey mav take me to swap" / "open the bank" / "show my portfolio"
+  - **Airdrop**: "Hey mav give me some SOL"
+  - **Agent info**: "Hey mav how many agents do I have"
+  - **Greeting**: "Hey mav" → "Hey Alpha, what can I do for you?"
+- Spoken response via macOS text-to-speech
+- Graceful degradation: voice disabled if sox or API key is missing
+
+## 12. Audit Trail
 
 **Skill**: `maintain_audit_log`
 **File**: `src/utils/historyProvider.ts`
@@ -132,4 +152,5 @@ This document describes the on-chain capabilities available to Maverick AI agent
 | Prediction bets | Yes | Yes | Yes |
 | Fund requests | Yes | Yes | Yes |
 | Peer lending | Yes | Yes | Yes |
+| Voice commands | - | Yes | Yes |
 | Audit logging | Yes | Yes | Yes |
