@@ -28,13 +28,6 @@ const nextConfig = {
       'dotenv$': dotenvEntry,
     };
 
-    // The parent src/ files use .js extensions in imports (Node ESM convention)
-    // but the actual files are .ts. This plugin rewrites .js -> .ts at resolve time.
-    config.resolve.extensionAlias = {
-      '.js': ['.js', '.ts', '.tsx'],
-      '.jsx': ['.jsx', '.tsx'],
-    };
-
     return config;
   },
 };
