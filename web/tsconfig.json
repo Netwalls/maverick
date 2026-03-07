@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": ".",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -16,7 +17,11 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@/*": ["./*"],
-      "@maverick/*": ["../src/*"]
+      "@maverick/*": ["../src/*"],
+      "@solana/web3.js": ["./node_modules/@solana/web3.js"],
+      "@solana/spl-token": ["./node_modules/@solana/spl-token"],
+      "bs58": ["./node_modules/bs58"],
+      "dotenv": ["./node_modules/dotenv"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
