@@ -124,3 +124,12 @@ export function speak(text: string): Promise<void> {
         exec(`say "${safe}"`, () => resolve());
     });
 }
+
+/**
+ * Check if transcript contains confirmation words
+ */
+export function parseConfirmation(transcript: string): boolean {
+    const lower = transcript.toLowerCase();
+    const yesWords = ['yes', 'yeah', 'yep', 'do it', 'go ahead', 'sure', 'confirm', 'place it', 'bet', 'absolutely', "let's go", 'send it'];
+    return yesWords.some(w => lower.includes(w));
+}

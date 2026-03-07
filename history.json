@@ -1668,5 +1668,12 @@
     "description": "Placed YES bet on KXMVECROSSCATEGORY-S2026F61E729C864-36C9363A1A8 for 0.004 SOL (0.6 shares @ $1.000)",
     "signature": "4b2QFgDnk5FuAxbPLmABDeE87jCTCgdwXUBFKaCFxG7T9CoYSJrG2AEj74wNNHwb7PMW9G3QTjzSNcMcdmCanwBq",
     "reasoning": "AI-suggested trade"
+  },
+  {
+    "timestamp": "2026-03-07T15:16:59.383Z",
+    "agentAddress": "EMuZbgr92wfEZsHNCExEejEPkEQEM82VQP54oM5D5sdT",
+    "action": "BANK_DEPOSIT",
+    "description": "Deposited 0.1 SOL to Maverick Bank Vault",
+    "signature": "3XHLeCBv7XCz7g8A5kbhYC7JPC4gr31dKtbjVxjEecnkJFrp5TzRKkigKiTnuctw8wJUKqAHgTxvvtAnqvrjc3Hp"
   }
 ]

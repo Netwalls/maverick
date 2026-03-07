@@ -8,7 +8,9 @@ import {
     transcribe,
     parseIntent,
     speak,
+    parseConfirmation,
 } from '../../voice/index.js';
+import { KalshiService } from '../../core/kalshiService.js';
 
 export type VoiceState = 'idle' | 'listening' | 'processing' | 'speaking';
 
@@ -134,10 +136,83 @@ export function useVoice(services: Services, nav: NavigationActions): VoiceHook 
                             break;
                         }
 
-                        case 'place_bet':
-                            nav.push('markets', 'Markets');
-                            response = `Hey ${agentName}, opening Markets so you can place a bet`;
-                            break;
+                        case 'place_bet': {
+                            // 1. Fetch markets
+                            const markets = await KalshiService.getMarkets();
+                            if (markets.length === 0) {
+                                response = `Hey ${agentName}, no markets available right now`;
+                                break;
+                            }
+                            // 2. Sort by activity, take top 10
+                            const sorted = [...markets].sort((a, b) => (b.yes_bid + b.yes_ask) - (a.yes_bid + a.yes_ask));
+                            const top = sorted.slice(0, 10);
+                            // 3. Pick highest spread (most opportunity)
+                            const suggested = top.reduce((best, m) => {
+                                const spread = Math.abs(m.yes_ask - m.yes_bid);
+                                const bestSpread = Math.abs(best.yes_ask - best.yes_bid);
+                                return spread > bestSpread ? m : best;
+                            }, top[0]!);
+                            // 4. Pick side
+                            const side = suggested.yes_bid > 50 ? 'YES' : 'NO';
+                            // 5. Get live price
+                            const price = await KalshiService.getMarketPrice(suggested.ticker);
+                            const entryPrice = side === 'YES' ? price.ask / 100 : (100 - price.bid) / 100;
+                            // 6. Speak the pick
+                            const pickMsg = `I found ${suggested.title.slice(0, 50)}, going ${side} at $${entryPrice.toFixed(2)}. Should I place it?`;
+                            setLastResponse(pickMsg);
+                            setState('speaking');
+                            await speak(pickMsg);
+                            // 7. Auto-record for confirmation
+                            setState('listening');
+                            record((confirmWav) => {
+                                setState('processing');
+                                void (async () => {
+                                    try {
+                                        if (!confirmWav) {
+                                            const cancelMsg = `Alright, bet cancelled`;
+                                            setLastResponse(cancelMsg);
+                                            setState('speaking');
+                                            await speak(cancelMsg);
+                                            return;
+                                        }
+                                        const confirmText = await transcribe(confirmWav);
+                                        const confirmed = parseConfirmation(confirmText);
+                                        if (confirmed && agent) {
+                                            setState('speaking');
+                                            await speak('Placing your bet now');
+                                            const sig = await services.signer.sendTransfer(
+                                                agent.wallet,
+                                                agent.wallet.getPublicKey(),
+                                                0.001
+                                            );
+                                            await services.history.recordAction({
+                                                timestamp: new Date().toISOString(),
+                                                agentAddress: agent.wallet.getPublicKey().toBase58(),
+                                                action: 'BET',
+                                                description: `Placed ${side} bet on ${suggested.ticker} for 0.001 SOL @ $${entryPrice.toFixed(3)}`,
+                                                signature: sig,
+                                                reasoning: 'Voice-activated AI-suggested trade',
+                                            });
+                                            const doneMsg = `Done! Placed ${side} bet on ${suggested.title.slice(0, 30)}`;
+                                            setLastResponse(doneMsg);
+                                            setState('speaking');
+                                            await speak(doneMsg);
+                                        } else {
+                                            const cancelMsg = `Alright, bet cancelled`;
+                                            setLastResponse(cancelMsg);
+                                            setState('speaking');
+                                            await speak(cancelMsg);
+                                        }
+                                    } catch {
+                                        await speak('Sorry, something went wrong placing the bet');
+                                    } finally {
+                                        busyRef.current = false;
+                                        setTimeout(() => setState('idle'), 3000);
+                                    }
+                                })();
+                            });
+                            return; // Early return - confirmation callback manages cleanup
+                        }
 
                         case 'send_funds':
                             nav.push('send', 'Send');
