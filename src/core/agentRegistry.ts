@@ -1,7 +1,7 @@
 import { Connection } from '@solana/web3.js';
-import { WalletManager } from './walletManager.js';
-import { BaseAgent } from '../agents/baseAgent.js';
-import { MaverickAgent } from '../agents/maverickAgent.js';
+import { WalletManager } from './walletManager';
+import { BaseAgent } from '../agents/baseAgent';
+import { MaverickAgent } from '../agents/maverickAgent';
 
 export class AgentRegistry {
     private agents: Map<string, BaseAgent> = new Map();

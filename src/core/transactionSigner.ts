@@ -7,7 +7,7 @@ import {
     TransactionInstruction,
     Keypair,
 } from '@solana/web3.js';
-import { WalletManager } from './walletManager.js';
+import { WalletManager } from './walletManager';
 
 export class TransactionSigner {
     constructor(private connection: Connection) { }

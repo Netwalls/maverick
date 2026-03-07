@@ -1,14 +1,14 @@
 import { Connection, clusterApiUrl, PublicKey } from '@solana/web3.js';
-import { WalletManager } from './core/walletManager.js';
-import { MaverickAgent } from './agents/maverickAgent.js';
-import { AgentRegistry } from './core/agentRegistry.js';
-import { MaverickBank } from './protocols/maverickBank.js';
-import { MaverickAMM } from './protocols/maverickAMM.js';
-import { CommunicationModule } from './core/communicationModule.js';
-import { TransactionSigner } from './core/transactionSigner.js';
-import { HistoryProvider } from './utils/historyProvider.js';
-import { TerminalUtils } from './utils/terminalUtils.js';
-import { VaultManager } from './core/vaultManager.js';
+import { WalletManager } from './core/walletManager';
+import { MaverickAgent } from './agents/maverickAgent';
+import { AgentRegistry } from './core/agentRegistry';
+import { MaverickBank } from './protocols/maverickBank';
+import { MaverickAMM } from './protocols/maverickAMM';
+import { CommunicationModule } from './core/communicationModule';
+import { TransactionSigner } from './core/transactionSigner';
+import { HistoryProvider } from './utils/historyProvider';
+import { TerminalUtils } from './utils/terminalUtils';
+import { VaultManager } from './core/vaultManager';
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 

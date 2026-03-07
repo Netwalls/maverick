@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
-import { TerminalUtils } from './terminalUtils.js';
+import { TerminalUtils } from './terminalUtils';
 import { Keypair } from '@solana/web3.js';
 import bs58 from 'bs58';
 

@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
-import type { WalletManager } from '../../core/walletManager.js';
+import type { WalletManager } from '../../core/walletManager';
 import type { Connection } from '@solana/web3.js';
-import { TokenService } from '../../core/tokenService.js';
-import { useInterval } from './useInterval.js';
+import { TokenService } from '../../core/tokenService';
+import { useInterval } from './useInterval';
 
 export function useBalance(wallet: WalletManager | null, connection: Connection, refreshMs = 10000) {
     const [sol, setSol] = useState(0);

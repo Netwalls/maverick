@@ -1,6 +1,6 @@
 import { Connection, Keypair, PublicKey } from '@solana/web3.js';
-import { WalletManager } from './walletManager.js';
-import { USDC_MINT_DEVNET } from './tokenService.js';
+import { WalletManager } from './walletManager';
+import { USDC_MINT_DEVNET } from './tokenService';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';

@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import bs58 from 'bs58';
 import * as dotenv from 'dotenv';
-import { TerminalUtils } from './utils/terminalUtils.js';
+import { TerminalUtils } from './utils/terminalUtils';
 
 dotenv.config();
 

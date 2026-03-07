@@ -1,17 +1,17 @@
 import { PublicKey, Connection } from '@solana/web3.js';
-import { BaseAgent } from './baseAgent.js';
-import { WalletManager } from '../core/walletManager.js';
-import { TransactionSigner } from '../core/transactionSigner.js';
-import { MarketSentiment, ReasoningEngine } from '../intelligence/reasoningEngine.js';
-import { HistoryProvider } from '../utils/historyProvider.js';
-import { TerminalUtils } from '../utils/terminalUtils.js';
-import { MaverickBank } from '../protocols/maverickBank.js';
-import type { Loan } from '../protocols/maverickBank.js';
+import { BaseAgent } from './baseAgent';
+import { WalletManager } from '../core/walletManager';
+import { TransactionSigner } from '../core/transactionSigner';
+import { MarketSentiment, ReasoningEngine } from '../intelligence/reasoningEngine';
+import { HistoryProvider } from '../utils/historyProvider';
+import { TerminalUtils } from '../utils/terminalUtils';
+import { MaverickBank } from '../protocols/maverickBank';
+import type { Loan } from '../protocols/maverickBank';
 import * as fs from 'fs';
 import * as path from 'path';
-import { KalshiService } from '../core/kalshiService.js';
-import { TokenService } from '../core/tokenService.js';
-import { LiquidityRouter } from '../core/liquidityRouter.js';
+import { KalshiService } from '../core/kalshiService';
+import { TokenService } from '../core/tokenService';
+import { LiquidityRouter } from '../core/liquidityRouter';
 
 export interface Position {
     marketName: string;

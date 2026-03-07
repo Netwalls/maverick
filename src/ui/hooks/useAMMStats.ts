@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import type { MaverickAMM } from '../../protocols/maverickAMM.js';
-import { useInterval } from './useInterval.js';
+import type { MaverickAMM } from '../../protocols/maverickAMM';
+import { useInterval } from './useInterval';
 
 interface AMMStats {
     sol: number;

@@ -1,9 +1,9 @@
 import { Connection, PublicKey } from '@solana/web3.js';
-import { BaseAgent } from './baseAgent.js';
-import { WalletManager } from '../core/walletManager.js';
-import { ReasoningEngine, MarketSentiment } from '../intelligence/reasoningEngine.js';
-import { HistoryProvider } from '../utils/historyProvider.js';
-import { TerminalUtils } from '../utils/terminalUtils.js';
+import { BaseAgent } from './baseAgent';
+import { WalletManager } from '../core/walletManager';
+import { ReasoningEngine, MarketSentiment } from '../intelligence/reasoningEngine';
+import { HistoryProvider } from '../utils/historyProvider';
+import { TerminalUtils } from '../utils/terminalUtils';
 
 export class TradingAgent extends BaseAgent {
     private targetAddress: PublicKey;

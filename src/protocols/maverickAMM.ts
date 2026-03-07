@@ -1,9 +1,9 @@
 import { Connection, PublicKey } from '@solana/web3.js';
-import { WalletManager } from '../core/walletManager.js';
-import { TransactionSigner } from '../core/transactionSigner.js';
-import { TokenService } from '../core/tokenService.js';
-import { TerminalUtils } from '../utils/terminalUtils.js';
-import { HistoryProvider } from '../utils/historyProvider.js';
+import { WalletManager } from '../core/walletManager';
+import { TransactionSigner } from '../core/transactionSigner';
+import { TokenService } from '../core/tokenService';
+import { TerminalUtils } from '../utils/terminalUtils';
+import { HistoryProvider } from '../utils/historyProvider';
 import * as fs from 'fs';
 import * as path from 'path';
 
