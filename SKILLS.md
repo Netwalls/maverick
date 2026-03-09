@@ -13,7 +13,8 @@ All users (CLI + Web) share ONE vault, ONE bank pool, ONE AMM, and ONE history d
 │  CLI (npx mav)   │     │  Website (Next.js)│
 │  React + Ink TUI │     │  React frontend   │
 │                  │     │                   │
-│  Key: ~/.maverick│     │  Key: localStorage│
+│  Key: ~/.maverick│     │  Key: encrypted   │
+│                  │     │  in Postgres (DB) │
 └───────┬──────────┘     └───────┬───────────┘
         │  HTTPS                 │  HTTPS
         └────────┬───────────────┘
@@ -25,24 +26,38 @@ All users (CLI + Web) share ONE vault, ONE bank pool, ONE AMM, and ONE history d
         └────────┬───────────┘
                  │
         ┌────────┴────────┐
-        │  Vercel Postgres │     ┌──────────┐
+        │  Neon Postgres   │     ┌──────────┐
         │  (shared state)  │     │  Solana   │
-        └─────────────────┘     │  Devnet   │
-                                └──────────┘
+        │  + wallets table │     │  Devnet   │
+        └─────────────────┘     └──────────┘
 ```
 
 ### Key Storage Per Platform
 
-| Platform | Where keys live | Created when |
+| Platform | Where keys live | How it works |
 |----------|----------------|-------------|
-| **CLI** (`npx maverick`) | `~/.maverick/.env` | First launch — auto-generated |
-| **Web** (browser) | `localStorage("maverick_wallet_key")` | First page visit — auto-generated |
-| **Vault** (server) | Vercel env `VAULT_PRIVATE_KEY` | Deploy-time — set once |
+| **Web** (browser) | Encrypted in Postgres `wallets` table | User picks username + password. Private key encrypted client-side (PBKDF2 + AES-GCM). Server stores ciphertext — never sees raw key. Login from any device. |
+| **CLI** (`npx maverick`) | `~/.maverick/.env` | Auto-generated on first launch. Stored as base58 in local `.env` file. |
+| **Vault** (server) | Vercel env `VAULT_PRIVATE_KEY` | Set once at deploy time. All API routes read it server-side. |
 
-Users can **import/export** keys between platforms:
-- Web: Wallet page has Export/Import buttons
-- CLI: Copy the `AGENT_PRIVATE_KEY` from `~/.maverick/.env`
-- Same private key = same wallet = same balances on both platforms
+### Web Auth Flow
+
+**Register:**
+1. User enters username + password on landing page
+2. Browser generates a new Solana keypair
+3. Password derives AES-256 key via PBKDF2 (100k iterations, SHA-256)
+4. Private key encrypted with AES-GCM (random salt + IV)
+5. Encrypted blob + public address stored in Postgres `wallets` table
+6. Server **never** sees the raw private key
+
+**Login:**
+1. User enters username + password
+2. Browser fetches encrypted blob from Postgres by username hash
+3. Password decrypts the private key client-side
+4. Keypair reconstructed — verified against stored public address
+5. Session cached in localStorage until logout
+
+**Security:** The password never leaves the browser. The server only stores ciphertext. Wrong password = decryption fails = login denied.
 
 ### Two-Phase Transaction Pattern
 
@@ -76,15 +91,16 @@ Backend verifies with `nacl.sign.detached.verify()`. Timestamp must be within 60
 ## 1. Wallet Management
 
 **Skill**: `create_and_manage_wallet`
-**Files**: `src/core/walletManager.ts`, `web/lib/browserWallet.ts`
+**Files**: `src/core/walletManager.ts`, `web/lib/cryptoWallet.ts`, `web/lib/browserWallet.ts`
 
 - Generate Solana keypairs programmatically (`Keypair.generate()`)
+- Web: Encrypted private key stored in Postgres — login from any device with username + password
 - CLI: Persist keys to `~/.maverick/.env` for identity across restarts
-- Web: Persist keys to `localStorage` for identity across sessions
+- Client-side encryption: PBKDF2 (100k iterations) + AES-256-GCM — server never sees raw key
 - Query real SOL balance from chain (`connection.getBalance()`)
 - Query SPL token balances (USDC via Associated Token Accounts)
 - Request devnet SOL airdrops (`connection.requestAirdrop()`)
-- Import/export private keys between CLI and Web
+- Export private key for use across platforms
 
 ## 2. Transaction Signing
 
@@ -160,7 +176,7 @@ Backend verifies with `nacl.sign.detached.verify()`. Timestamp must be within 60
 
 - Dynamic discovery: scan env for `*_PRIVATE_KEY` patterns
 - CLI: Create new agents at runtime (generate keypair, save to `~/.maverick/.env`)
-- Web: Single wallet per browser (import/export to share across devices)
+- Web: One wallet per account — login from any device with username + password
 - Agent types: Trader, Prediction Bot
 - Each agent operates independently with its own wallet and strategy
 
@@ -224,6 +240,8 @@ Backend verifies with `nacl.sign.detached.verify()`. Timestamp must be within 60
 |-------|--------|------|-------------|
 | `/api/vault/info` | GET | No | Vault pubkey + SOL balance |
 | `/api/vault/setup` | POST | Secret | Initialize database schema |
+| `/api/auth/register` | POST | No | Store encrypted wallet (client-side encrypted) |
+| `/api/auth/login` | POST | No | Retrieve encrypted wallet for client-side decryption |
 | `/api/bank/deposit` | POST | Wallet sig | Record deposit (verify tx on-chain) |
 | `/api/bank/loan` | POST | Wallet sig | Vault signs loan tx server-side |
 | `/api/bank/payback` | POST | Wallet sig | Record payback (verify tx on-chain) |
@@ -234,6 +252,18 @@ Backend verifies with `nacl.sign.detached.verify()`. Timestamp must be within 60
 | `/api/amm/pool` | GET | No | Pool reserves + stats |
 | `/api/amm/liquidity` | POST | Wallet sig | Add liquidity |
 | `/api/history` | GET/POST | No/Optional | Query/record history |
+
+### Database Tables (Neon Postgres)
+
+| Table | Purpose |
+|-------|---------|
+| `wallets` | Encrypted private keys, public addresses, username hashes |
+| `contributions` | Bank deposits per wallet |
+| `loans` | Active and repaid loans |
+| `amm_state` | Pool reserves, k-value, fee rate (single row) |
+| `lp_shares` | Liquidity provider shares per wallet |
+| `history` | Transaction audit log |
+| `funding_requests` | Inter-agent governance proposals |
 
 ---
 
@@ -248,7 +278,7 @@ vercel env add VAULT_PRIVATE_KEY    # Set vault key
 vercel env add SETUP_SECRET         # Set setup secret
 vercel --prod                       # Production deploy
 
-# Initialize database
+# Initialize database (creates all 7 tables)
 curl -X POST https://your-api.vercel.app/api/vault/setup \
   -H "x-setup-secret: your-secret"
 ```

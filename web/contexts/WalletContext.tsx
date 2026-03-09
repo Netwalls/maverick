@@ -1,17 +1,22 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { Keypair, PublicKey, Connection, clusterApiUrl, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { Keypair, Connection, clusterApiUrl, LAMPORTS_PER_SOL } from '@solana/web3.js';
 import {
   loadOrCreateWallet,
-  importWallet,
   exportPrivateKey,
   setWalletName,
   type BrowserWallet,
 } from '../lib/browserWallet';
+import {
+  registerAccount,
+  loginAccount,
+  logout as cryptoLogout,
+  isLoggedIn,
+} from '../lib/cryptoWallet';
 
 interface WalletContextValue {
-  /** The user's wallet — null during SSR / initial load */
+  /** The user's wallet — null if not logged in */
   wallet: BrowserWallet | null;
   /** Solana devnet connection */
   connection: Connection;
@@ -19,8 +24,14 @@ interface WalletContextValue {
   balance: number;
   /** Whether wallet is loading */
   loading: boolean;
-  /** Import an existing wallet by private key */
-  importKey: (privateKey: string) => void;
+  /** Whether user is authenticated */
+  authenticated: boolean;
+  /** Register a new account (username + password) */
+  register: (username: string, password: string) => Promise<void>;
+  /** Login with existing account */
+  login: (username: string, password: string) => Promise<void>;
+  /** Logout and clear session */
+  logout: () => void;
   /** Export the current private key */
   exportKey: () => string | null;
   /** Rename the wallet */
@@ -37,11 +48,20 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [wallet, setWallet] = useState<BrowserWallet | null>(null);
   const [balance, setBalance] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
 
-  // Initialize wallet from localStorage on mount (client-side only)
+  // On mount: check if user has an active session in localStorage
   useEffect(() => {
-    const w = loadOrCreateWallet();
-    setWallet(w);
+    if (isLoggedIn()) {
+      try {
+        const w = loadOrCreateWallet();
+        setWallet(w);
+        setAuthenticated(true);
+      } catch {
+        // Corrupted session — clear it
+        cryptoLogout();
+      }
+    }
     setLoading(false);
   }, []);
 
@@ -62,9 +82,45 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     return () => clearInterval(interval);
   }, [refreshBalance]);
 
-  const importKey = useCallback((privateKey: string) => {
-    const w = importWallet(privateKey);
-    setWallet(w);
+  const register = useCallback(async (username: string, password: string) => {
+    setLoading(true);
+    try {
+      const { keypair } = await registerAccount(username, password);
+      const w: BrowserWallet = {
+        keypair,
+        publicKey: keypair.publicKey,
+        address: keypair.publicKey.toBase58(),
+        name: username,
+      };
+      setWallet(w);
+      setAuthenticated(true);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const login = useCallback(async (username: string, password: string) => {
+    setLoading(true);
+    try {
+      const { keypair } = await loginAccount(username, password);
+      const w: BrowserWallet = {
+        keypair,
+        publicKey: keypair.publicKey,
+        address: keypair.publicKey.toBase58(),
+        name: username,
+      };
+      setWallet(w);
+      setAuthenticated(true);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const logout = useCallback(() => {
+    cryptoLogout();
+    setWallet(null);
+    setBalance(0);
+    setAuthenticated(false);
   }, []);
 
   const exportKey = useCallback(() => {
@@ -80,7 +136,19 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <WalletContext.Provider
-      value={{ wallet, connection, balance, loading, importKey, exportKey, rename, refreshBalance }}
+      value={{
+        wallet,
+        connection,
+        balance,
+        loading,
+        authenticated,
+        register,
+        login,
+        logout,
+        exportKey,
+        rename,
+        refreshBalance,
+      }}
     >
       {children}
     </WalletContext.Provider>

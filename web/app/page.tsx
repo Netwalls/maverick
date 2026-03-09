@@ -1,14 +1,15 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { registerAccount, loginAccount, isLoggedIn } from '../lib/cryptoWallet';
 
 const ASCII_LOGO = `
- __  __                         _      _    
-|  \\/  |                       (_)    | |   
+ __  __                         _      _
+|  \\/  |                       (_)    | |
 | \\  / | __ ___   _____ _ __   _  ___| | __
 | |\\/| |/ _\` \\ \\ / / _ \\ '__| | |/ __| |/ /
-| |  | | (_| |\\ V /  __/ |    | | (__|   < 
+| |  | | (_| |\\ V /  __/ |    | | (__|   <
 |_|  |_|\\__,_| \\_/ \\___|_|    |_|\\___|_|\\_\\
 `;
 
@@ -117,6 +118,45 @@ function TerminalDemo() {
 }
 
 export default function LandingPage() {
+  const router = useRouter();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [isRegister, setIsRegister] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  // If already logged in, go straight to dashboard
+  useEffect(() => {
+    if (isLoggedIn()) {
+      router.push('/dashboard');
+    }
+  }, [router]);
+
+  const handleEnter = async () => {
+    setError('');
+    if (!username.trim() || !password) {
+      setError('Username and password required');
+      return;
+    }
+    if (isRegister && password.length < 6) {
+      setError('Password must be at least 6 characters');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      if (isRegister) {
+        await registerAccount(username.trim(), password);
+      } else {
+        await loginAccount(username.trim(), password);
+      }
+      router.push('/dashboard');
+    } catch (e: any) {
+      setError(e.message);
+    }
+    setLoading(false);
+  };
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -146,18 +186,83 @@ export default function LandingPage() {
 
       <TerminalDemo />
 
-      <div style={{ marginTop: 40, textAlign: 'center' }}>
-        <Link href="/dashboard">
-          <button className="btn-green" style={{
+      {/* Auth form */}
+      <div style={{
+        marginTop: 40,
+        width: '100%',
+        maxWidth: 360,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 12,
+      }}>
+        <div style={{ fontSize: 11, color: 'var(--text-muted)', textAlign: 'center', marginBottom: 4 }}>
+          {isRegister
+            ? 'Create an account to get a Solana wallet. Your key is encrypted with your password — the server never sees it.'
+            : 'Enter your credentials to decrypt your wallet and continue.'}
+        </div>
+
+        <input
+          type="text"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+          placeholder="Username"
+          autoComplete="username"
+          style={{ width: '100%' }}
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          placeholder="Password"
+          autoComplete={isRegister ? 'new-password' : 'current-password'}
+          style={{ width: '100%' }}
+          onKeyDown={e => { if (e.key === 'Enter') handleEnter(); }}
+        />
+
+        <button
+          className="btn-green"
+          onClick={handleEnter}
+          disabled={loading}
+          style={{
+            width: '100%',
             padding: '14px 40px',
             fontSize: 14,
             fontWeight: 700,
             letterSpacing: 2,
             boxShadow: 'var(--glow-green)',
-          }}>
-            ENTER TERMINAL
-          </button>
-        </Link>
+          }}
+        >
+          {loading
+            ? (isRegister ? 'CREATING WALLET...' : 'DECRYPTING...')
+            : 'ENTER TERMINAL'}
+        </button>
+
+        <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
+          {isRegister ? (
+            <span>
+              Already have an account?{' '}
+              <a href="#" onClick={e => { e.preventDefault(); setIsRegister(false); setError(''); }}
+                style={{ color: 'var(--cyan)' }}>
+                Login
+              </a>
+            </span>
+          ) : (
+            <span>
+              New here?{' '}
+              <a href="#" onClick={e => { e.preventDefault(); setIsRegister(true); setError(''); }}
+                style={{ color: 'var(--cyan)' }}>
+                Create Account
+              </a>
+            </span>
+          )}
+        </div>
+
+        {error && (
+          <div style={{ fontSize: 12, color: 'var(--red)', textAlign: 'center' }}>
+            {error}
+          </div>
+        )}
       </div>
 
       <div style={{ marginTop: 64, width: '100%', maxWidth: 900 }}>

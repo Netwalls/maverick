@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { PublicKey } from '@solana/web3.js';
 import Terminal from '../../components/Terminal';
 import { useWallet } from '../../contexts/WalletContext';
@@ -13,7 +14,12 @@ interface BankData {
 }
 
 export default function BankPage() {
-  const { wallet, connection, refreshBalance } = useWallet();
+  const { wallet, connection, refreshBalance, authenticated, loading: walletLoading } = useWallet();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!walletLoading && !authenticated) router.push('/wallet');
+  }, [walletLoading, authenticated, router]);
   const [data, setData] = useState<BankData | null>(null);
   const [vaultPubkey, setVaultPubkey] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);

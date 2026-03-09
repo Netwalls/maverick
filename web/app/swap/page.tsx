@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { PublicKey } from '@solana/web3.js';
 import Terminal from '../../components/Terminal';
 import { useWallet } from '../../contexts/WalletContext';
@@ -13,7 +14,12 @@ interface PoolStats {
 }
 
 export default function SwapPage() {
-  const { wallet, connection, refreshBalance } = useWallet();
+  const { wallet, connection, refreshBalance, authenticated, loading: walletLoading } = useWallet();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!walletLoading && !authenticated) router.push('/wallet');
+  }, [walletLoading, authenticated, router]);
   const [pool, setPool] = useState<PoolStats | null>(null);
   const [vaultPubkey, setVaultPubkey] = useState<string | null>(null);
   const [input, setInput] = useState<'SOL' | 'USDC'>('SOL');

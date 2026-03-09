@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import Terminal from '../../components/Terminal';
 import { useWallet } from '../../contexts/WalletContext';
 import { getHistory } from '../../lib/maverickApi';
@@ -16,7 +17,12 @@ interface HistoryItem {
 }
 
 export default function HistoryPage() {
-  const { wallet } = useWallet();
+  const { wallet, authenticated, loading: walletLoading } = useWallet();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!walletLoading && !authenticated) router.push('/wallet');
+  }, [walletLoading, authenticated, router]);
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('');

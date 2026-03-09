@@ -71,6 +71,18 @@ export async function initSchema(): Promise<void> {
     )
   `;
 
+  await sql`
+    CREATE TABLE IF NOT EXISTS wallets (
+      id SERIAL PRIMARY KEY,
+      username_hash TEXT NOT NULL UNIQUE,
+      encrypted_private_key TEXT NOT NULL,
+      public_address TEXT NOT NULL,
+      salt TEXT NOT NULL,
+      iv TEXT NOT NULL,
+      created_at TIMESTAMPTZ DEFAULT NOW()
+    )
+  `;
+
   // Ensure AMM state row exists
   await sql`
     INSERT INTO amm_state (id, sol_reserve, usdc_reserve, k_value, fee_rate, total_shares)
@@ -172,6 +184,28 @@ export async function getHistory(wallet?: string, limit = 50) {
     `;
   }
   return sql`SELECT * FROM history ORDER BY created_at DESC LIMIT ${limit}`;
+}
+
+// Wallet queries (encrypted key storage)
+export async function registerWallet(
+  usernameHash: string,
+  encryptedKey: string,
+  publicAddress: string,
+  salt: string,
+  iv: string
+) {
+  return sql`
+    INSERT INTO wallets (username_hash, encrypted_private_key, public_address, salt, iv)
+    VALUES (${usernameHash}, ${encryptedKey}, ${publicAddress}, ${salt}, ${iv})
+  `;
+}
+
+export async function getWalletByUsername(usernameHash: string) {
+  const result = await sql`
+    SELECT encrypted_private_key, public_address, salt, iv
+    FROM wallets WHERE username_hash = ${usernameHash}
+  `;
+  return result.rows[0] ?? null;
 }
 
 // Vault balance computed from contributions + loan repayments - loans issued - withdrawals
