@@ -28,6 +28,12 @@ const nextConfig = {
       'dotenv$': dotenvEntry,
     };
 
+    config.resolve.extensionAlias = {
+      ...(config.resolve.extensionAlias || {}),
+      '.js': ['.ts', '.tsx', '.js', '.jsx'],
+      '.mjs': ['.mts', '.mjs'],
+    };
+
     return config;
   },
 };
