@@ -15,7 +15,7 @@ import {
     transfer as splTransfer,
     getAssociatedTokenAddress as splGetATA,
 } from '@solana/spl-token';
-import { WalletManager } from './walletManager';
+import { WalletManager } from './walletManager.js';
 
 // Constants for USDC
 export const USDC_MINT_MAINNET = new PublicKey('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');

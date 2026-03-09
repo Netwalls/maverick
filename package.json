@@ -1,11 +1,11 @@
 {
   "name": "maverick-wallet",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Maverick: Fine Terminal Multi-Agent Ecosystem — Shared Vault + CLI",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "maverick": "./dist/cli.js"
+    "maverick": "./dist/bin/maverick.js"
   },
   "files": [
     "dist/"

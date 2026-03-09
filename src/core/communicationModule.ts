@@ -1,9 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { WalletManager } from './walletManager';
-import { TransactionSigner } from './transactionSigner';
-import { HistoryProvider } from '../utils/historyProvider';
-import { TerminalUtils } from '../utils/terminalUtils';
+import { WalletManager } from './walletManager.js';
+import { TransactionSigner } from './transactionSigner.js';
+import { HistoryProvider } from '../utils/historyProvider.js';
+import { TerminalUtils } from '../utils/terminalUtils.js';
 
 export interface FundingRequest {
     id: string;

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { KalshiService } from '../../core/kalshiService';
-import type { KalshiMarket } from '../../core/kalshiService';
+import { KalshiService } from '../../core/kalshiService.js';
+import type { KalshiMarket } from '../../core/kalshiService.js';
 
 interface CategoryInfo {
     name: string;

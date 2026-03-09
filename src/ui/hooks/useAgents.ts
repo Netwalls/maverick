@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { AgentEntry } from '../context/ServicesContext';
+import type { AgentEntry } from '../context/ServicesContext.js';
 
 export function useAgents(agents: AgentEntry[]) {
     const [agentStats, setAgentStats] = useState<{

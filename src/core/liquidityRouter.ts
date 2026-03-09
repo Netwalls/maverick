@@ -1,7 +1,7 @@
 import { Connection, PublicKey } from '@solana/web3.js';
-import { MaverickAMM } from '../protocols/maverickAMM';
-import { WalletManager } from './walletManager';
-import { TerminalUtils } from '../utils/terminalUtils';
+import { MaverickAMM } from '../protocols/maverickAMM.js';
+import { WalletManager } from './walletManager.js';
+import { TerminalUtils } from '../utils/terminalUtils.js';
 
 export class LiquidityRouter {
     constructor(

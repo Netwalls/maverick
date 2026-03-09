@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import type { HistoryProvider, AgentAction } from '../../utils/historyProvider';
+import type { HistoryProvider, AgentAction } from '../../utils/historyProvider.js';
 
 export function useHistory(historyProvider: HistoryProvider) {
     const [entries, setEntries] = useState<AgentAction[]>([]);

@@ -1,8 +1,8 @@
 import { Connection, PublicKey } from '@solana/web3.js';
-import { TradingAgent } from './tradingAgent';
-import { WalletManager } from '../core/walletManager';
-import { MarketSentiment } from '../intelligence/reasoningEngine';
-import { TerminalUtils } from '../utils/terminalUtils';
+import { TradingAgent } from './tradingAgent.js';
+import { WalletManager } from '../core/walletManager.js';
+import { MarketSentiment } from '../intelligence/reasoningEngine.js';
+import { TerminalUtils } from '../utils/terminalUtils.js';
 
 export class PredictionBot extends TradingAgent {
     private predictionMarketAddress: PublicKey = new PublicKey('675k1S2wER9S7z7E6FfEuef1zYpDq98yPz2RE65RE65R');

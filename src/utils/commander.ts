@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { TerminalUtils } from './terminalUtils';
+import { TerminalUtils } from './terminalUtils.js';
 
 interface Signal {
     agentName: string;

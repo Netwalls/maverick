@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import type { Services } from '../context/ServicesContext';
-import type { ScreenName } from '../context/NavigationContext';
+import type { Services } from '../context/ServicesContext.js';
+import type { ScreenName } from '../context/NavigationContext.js';
 import {
     isAvailable,
     initVoiceService,
@@ -9,8 +9,8 @@ import {
     parseIntent,
     speak,
     parseConfirmation,
-} from '../../voice/index';
-import { KalshiService } from '../../core/kalshiService';
+} from '../../voice/index.js';
+import { KalshiService } from '../../core/kalshiService.js';
 
 export type VoiceState = 'idle' | 'listening' | 'processing' | 'speaking';
 

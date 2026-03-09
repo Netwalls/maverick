@@ -1,9 +1,9 @@
 import { Connection } from '@solana/web3.js';
-import { WalletManager } from '../core/walletManager';
-import { TransactionSigner } from '../core/transactionSigner';
-import { HistoryProvider } from '../utils/historyProvider';
-import { TerminalUtils } from '../utils/terminalUtils';
-import { MaverickAMM } from './maverickAMM';
+import { WalletManager } from '../core/walletManager.js';
+import { TransactionSigner } from '../core/transactionSigner.js';
+import { HistoryProvider } from '../utils/historyProvider.js';
+import { TerminalUtils } from '../utils/terminalUtils.js';
+import { MaverickAMM } from './maverickAMM.js';
 
 export interface Loan {
     borrower: string;

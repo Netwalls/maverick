@@ -1,6 +1,6 @@
 import { Connection } from '@solana/web3.js';
-import { WalletManager } from '../core/walletManager';
-import { TransactionSigner } from '../core/transactionSigner';
+import { WalletManager } from '../core/walletManager.js';
+import { TransactionSigner } from '../core/transactionSigner.js';
 
 export abstract class BaseAgent {
     protected wallet: WalletManager;
