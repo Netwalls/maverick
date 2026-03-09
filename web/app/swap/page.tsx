@@ -1,19 +1,21 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import { PublicKey } from '@solana/web3.js';
 import Terminal from '../../components/Terminal';
+import { useWallet } from '../../contexts/WalletContext';
+import { getVaultInfo, ammPool, ammQuote, ammSwap } from '../../lib/maverickApi';
 
 interface PoolStats {
   sol: number;
   usdc: number;
-  lpCount: number;
   price: number;
 }
 
 export default function SwapPage() {
+  const { wallet, connection, refreshBalance } = useWallet();
   const [pool, setPool] = useState<PoolStats | null>(null);
-  const [agents, setAgents] = useState<{name: string, address: string}[]>([]);
-  const [selectedAgent, setSelectedAgent] = useState(0);
+  const [vaultPubkey, setVaultPubkey] = useState<string | null>(null);
   const [input, setInput] = useState<'SOL' | 'USDC'>('SOL');
   const [amount, setAmount] = useState('');
   const [quote, setQuote] = useState(0);
@@ -21,51 +23,38 @@ export default function SwapPage() {
   const [swapping, setSwapping] = useState(false);
   const [message, setMessage] = useState('');
 
-  const fetchPool = () => {
-    fetch('/api/swap')
-      .then(r => r.json())
-      .then(data => {
-        setPool(data.pool);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  };
-
-  useEffect(() => {
-    fetchPool();
-    fetch('/api/wallet').then(r => r.json()).then(data => {
-      setAgents((data.agents || []).map((a: any) => ({ name: a.name, address: a.address })));
-    }).catch(() => {});
+  const fetchPool = useCallback(async () => {
+    try {
+      const [poolData, vault] = await Promise.all([ammPool(), getVaultInfo()]);
+      setPool({ sol: poolData.sol, usdc: poolData.usdc, price: poolData.price });
+      setVaultPubkey(vault.vault);
+    } catch {
+      // silent
+    }
+    setLoading(false);
   }, []);
 
+  useEffect(() => { fetchPool(); }, [fetchPool]);
+
+  // Live quote
   useEffect(() => {
     const amt = parseFloat(amount);
     if (!amt || amt <= 0) { setQuote(0); return; }
-    fetch(`/api/swap?input=${input}&amount=${amt}`)
-      .then(r => r.json())
-      .then(data => setQuote(data.quote || 0))
+    ammQuote(input, amt)
+      .then(data => setQuote(data.output || 0))
       .catch(() => setQuote(0));
   }, [amount, input]);
 
   const handleSwap = async () => {
     const amt = parseFloat(amount);
-    if (!amt || amt <= 0) return;
+    if (!amt || amt <= 0 || !wallet || !vaultPubkey) return;
     setSwapping(true);
     setMessage('');
     try {
-      const res = await fetch('/api/swap', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ input, amount: amt, agentIndex: selectedAgent }),
-      });
-      const data = await res.json();
-      if (data.error) {
-        setMessage(`ERROR: ${data.error}`);
-      } else {
-        setMessage(`Swapped ${amt} ${input} for ${data.output.toFixed(2)} ${input === 'SOL' ? 'USDC' : 'SOL'}`);
-        setPool(data.pool);
-        setAmount('');
-      }
+      const result = await ammSwap(connection, wallet.keypair, new PublicKey(vaultPubkey), input, amt);
+      setMessage(`Swapped ${amt} ${input} for ${result.output.toFixed(4)} ${input === 'SOL' ? 'USDC' : 'SOL'}`);
+      setAmount('');
+      await Promise.all([fetchPool(), refreshBalance()]);
     } catch (e: any) {
       setMessage(`ERROR: ${e.message}`);
     }
@@ -77,7 +66,7 @@ export default function SwapPage() {
   return (
     <div>
       <Terminal title="maverick :: swap">
-        <div className="card-header">AMM Swap</div>
+        <div className="card-header">AMM Swap (Shared Pool)</div>
 
         {loading ? (
           <div className="loader">Loading pool data</div>
@@ -87,13 +76,13 @@ export default function SwapPage() {
               <div className="grid-3" style={{ marginBottom: 24 }}>
                 <div className="card">
                   <div className="stat">
-                    <div className="stat-value">{pool.sol.toFixed(2)}</div>
+                    <div className="stat-value">{pool.sol.toFixed(4)}</div>
                     <div className="stat-label">SOL Reserve</div>
                   </div>
                 </div>
                 <div className="card">
                   <div className="stat">
-                    <div className="stat-value">{pool.usdc.toFixed(2)}</div>
+                    <div className="stat-value">{pool.usdc.toFixed(4)}</div>
                     <div className="stat-label">USDC Reserve</div>
                   </div>
                 </div>
@@ -105,23 +94,6 @@ export default function SwapPage() {
                     <div className="stat-label">USDC / SOL</div>
                   </div>
                 </div>
-              </div>
-            )}
-
-            {agents.length > 1 && (
-              <div style={{ marginBottom: 16 }}>
-                <label style={{ fontSize: 11, color: 'var(--text-muted)', display: 'block', marginBottom: 4 }}>
-                  SELECT AGENT
-                </label>
-                <select
-                  value={selectedAgent}
-                  onChange={e => setSelectedAgent(parseInt(e.target.value))}
-                  style={{ maxWidth: 300 }}
-                >
-                  {agents.map((a, i) => (
-                    <option key={i} value={i}>{a.name} ({a.address.slice(0, 8)}...)</option>
-                  ))}
-                </select>
               </div>
             )}
 
@@ -175,7 +147,7 @@ export default function SwapPage() {
                 }}>
                   <span style={{ color: 'var(--text-muted)' }}>You receive: </span>
                   <span style={{ color: 'var(--green)', fontWeight: 600 }}>
-                    {quote.toFixed(2)} {outputToken}
+                    {quote.toFixed(4)} {outputToken}
                   </span>
                   {parseFloat(amount) > 0 && (
                     <span style={{ color: 'var(--text-muted)', marginLeft: 12 }}>
@@ -190,7 +162,7 @@ export default function SwapPage() {
                 disabled={swapping || !parseFloat(amount)}
                 className="btn-green"
               >
-                {swapping ? 'Swapping...' : `Swap ${input} -> ${outputToken}`}
+                {swapping ? 'Signing tx...' : `Swap ${input} -> ${outputToken}`}
               </button>
 
               {message && (

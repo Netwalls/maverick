@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Nav from './Nav';
 import StatusBar from './StatusBar';
+import { WalletProvider } from '../contexts/WalletContext';
 
 export default function LayoutShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -18,7 +19,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
   }
 
   return (
-    <>
+    <WalletProvider>
       <div className="scanline" />
       <div className="app-layout">
         <Nav />
@@ -27,6 +28,6 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
         </main>
       </div>
       <StatusBar />
-    </>
+    </WalletProvider>
   );
 }

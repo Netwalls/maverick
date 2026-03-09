@@ -2,26 +2,100 @@
 
 This document describes the on-chain capabilities available to Maverick AI agents. Each skill maps to real Solana devnet transactions.
 
+---
+
+## Architecture: Shared Vault
+
+All users (CLI + Web) share ONE vault, ONE bank pool, ONE AMM, and ONE history database.
+
+```
+┌──────────────────┐     ┌──────────────────┐
+│  CLI (npx mav)   │     │  Website (Next.js)│
+│  React + Ink TUI │     │  React frontend   │
+│                  │     │                   │
+│  Key: ~/.maverick│     │  Key: localStorage│
+└───────┬──────────┘     └───────┬───────────┘
+        │  HTTPS                 │  HTTPS
+        └────────┬───────────────┘
+                 ▼
+        ┌────────────────────┐
+        │  Vercel Serverless │
+        │  API (maverick-api)│
+        │  Vault key in env  │
+        └────────┬───────────┘
+                 │
+        ┌────────┴────────┐
+        │  Vercel Postgres │     ┌──────────┐
+        │  (shared state)  │     │  Solana   │
+        └─────────────────┘     │  Devnet   │
+                                └──────────┘
+```
+
+### Key Storage Per Platform
+
+| Platform | Where keys live | Created when |
+|----------|----------------|-------------|
+| **CLI** (`npx maverick`) | `~/.maverick/.env` | First launch — auto-generated |
+| **Web** (browser) | `localStorage("maverick_wallet_key")` | First page visit — auto-generated |
+| **Vault** (server) | Vercel env `VAULT_PRIVATE_KEY` | Deploy-time — set once |
+
+Users can **import/export** keys between platforms:
+- Web: Wallet page has Export/Import buttons
+- CLI: Copy the `AGENT_PRIVATE_KEY` from `~/.maverick/.env`
+- Same private key = same wallet = same balances on both platforms
+
+### Two-Phase Transaction Pattern
+
+**User sends SOL to vault** (deposits, paybacks, swap inputs):
+1. Client builds + signs tx locally (browser or CLI)
+2. Client sends tx to Solana on-chain
+3. Client POSTs tx signature to API
+4. API verifies tx landed on-chain via `connection.getTransaction(sig)`
+5. API records in Postgres
+
+**Vault sends SOL to user** (loans, withdrawals, swap outputs):
+1. Client POSTs request (wallet-signed for auth)
+2. API builds tx, vault keypair signs server-side
+3. API submits to Solana, returns signature
+4. API records in Postgres
+
+### API Authentication
+
+Every POST includes a wallet signature:
+```json
+{
+  "wallet": "base58-pubkey",
+  "timestamp": 1234567890,
+  "signature": "base64(nacl.sign.detached('maverick:<timestamp>', secretKey))"
+}
+```
+Backend verifies with `nacl.sign.detached.verify()`. Timestamp must be within 60 seconds.
+
+---
+
 ## 1. Wallet Management
 
 **Skill**: `create_and_manage_wallet`
-**File**: `src/core/walletManager.ts`
+**Files**: `src/core/walletManager.ts`, `web/lib/browserWallet.ts`
 
 - Generate Solana keypairs programmatically (`Keypair.generate()`)
-- Persist keys to `.env` for identity across restarts
+- CLI: Persist keys to `~/.maverick/.env` for identity across restarts
+- Web: Persist keys to `localStorage` for identity across sessions
 - Query real SOL balance from chain (`connection.getBalance()`)
 - Query SPL token balances (USDC via Associated Token Accounts)
 - Request devnet SOL airdrops (`connection.requestAirdrop()`)
+- Import/export private keys between CLI and Web
 
 ## 2. Transaction Signing
 
 **Skill**: `sign_and_send_transactions`
-**File**: `src/core/transactionSigner.ts`
+**Files**: `src/core/transactionSigner.ts`, `src/api/apiClient.ts`
 
 - Build and sign Solana transactions without human intervention
 - Fresh blockhash fetching to prevent expiry errors
 - Graceful handling of block height exceeded — verifies tx landed on-chain before reporting failure
 - Supports both SOL transfers and custom instruction transactions
+- Remote mode: client signs → API verifies on-chain
 
 ## 3. SPL Token Operations
 
@@ -36,27 +110,27 @@ This document describes the on-chain capabilities available to Maverick AI agent
 ## 4. AMM Swaps
 
 **Skill**: `swap_via_amm`
-**File**: `src/protocols/maverickAMM.ts`
+**Files**: `src/protocols/maverickAMM.ts` (local), `src/api/RemoteMaverickAMM.ts` (remote)
 
 - Swap SOL to USDC and USDC to SOL via constant-product AMM (x * y = k)
 - 0.3% swap fee
+- Pool state stored in Postgres (shared across all users)
 - Real two-step atomic flow:
-  - SOL->USDC: Agent sends SOL to vault, vault sends USDC to agent
-  - USDC->SOL: Agent sends USDC to vault, vault sends SOL to agent
+  - SOL→USDC: User sends SOL to vault on-chain, API credits USDC
+  - USDC→SOL: User sends USDC to vault, API sends SOL from vault
 - Provide liquidity by depositing SOL + USDC (earn LP shares)
 - Quote engine for swap previews before execution
 
 ## 5. Bank Operations (Ajo Savings)
 
 **Skill**: `participate_in_bank`
-**File**: `src/protocols/maverickBank.ts`
+**Files**: `src/protocols/maverickBank.ts` (local), `src/api/RemoteMaverickBank.ts` (remote)
 
-- **Deposit**: Transfer SOL from agent wallet to vault (real tx)
-- **Loan**: Vault transfers SOL to agent (vault keypair signs)
-- **Payback**: Agent transfers loan + 5% interest back to vault
-- **Withdraw**: Vault transfers contribution back to agent
-- **Rotating Payouts**: Periodic rewards distributed from vault interest
-- **Contribution Collection**: Automated collection from all participants
+- **Deposit**: User signs SOL transfer to vault on-chain → API verifies + records
+- **Loan**: API builds tx, vault signs server-side → SOL sent to user
+- **Payback**: User signs SOL transfer (principal + 5% fee) → API verifies + marks repaid
+- **Withdraw**: API builds tx, vault signs → contributions returned to user
+- All state in Postgres: contributions, loans, balances — shared across all users
 
 ## 6. Prediction Market Trading
 
@@ -84,8 +158,9 @@ This document describes the on-chain capabilities available to Maverick AI agent
 **Skill**: `discover_and_create_agents`
 **Files**: `src/core/agentRegistry.ts`, `src/ui/components/screens/InviteScreen.tsx`
 
-- Dynamic discovery: scan `.env` for `*_PRIVATE_KEY` patterns
-- Create new agents at runtime (generate keypair, save to `.env`, register)
+- Dynamic discovery: scan env for `*_PRIVATE_KEY` patterns
+- CLI: Create new agents at runtime (generate keypair, save to `~/.maverick/.env`)
+- Web: Single wallet per browser (import/export to share across devices)
 - Agent types: Trader, Prediction Bot
 - Each agent operates independently with its own wallet and strategy
 
@@ -133,24 +208,89 @@ This document describes the on-chain capabilities available to Maverick AI agent
 ## 12. Audit Trail
 
 **Skill**: `maintain_audit_log`
-**File**: `src/utils/historyProvider.ts`
+**Files**: `src/utils/historyProvider.ts`, `maverick-api/lib/db.ts`
 
-- Append-only `history.json` recording every action
-- Fields: timestamp, agent address, action type, description, tx signature, reasoning
-- Queryable per-agent via `npm run history -- <Name>`
+- Remote mode: history stored in Postgres (shared, queryable by all users)
+- Local mode: append-only `history.json` recording every action
+- Fields: timestamp, wallet address, action type, description, tx signature, reasoning
+- Web: "Show all users" toggle to see global history
 - Full transparency: every on-chain action is traceable
+
+---
+
+## API Endpoints
+
+| Route | Method | Auth | Description |
+|-------|--------|------|-------------|
+| `/api/vault/info` | GET | No | Vault pubkey + SOL balance |
+| `/api/vault/setup` | POST | Secret | Initialize database schema |
+| `/api/bank/deposit` | POST | Wallet sig | Record deposit (verify tx on-chain) |
+| `/api/bank/loan` | POST | Wallet sig | Vault signs loan tx server-side |
+| `/api/bank/payback` | POST | Wallet sig | Record payback (verify tx on-chain) |
+| `/api/bank/withdraw` | POST | Wallet sig | Vault signs withdraw tx server-side |
+| `/api/bank/status` | GET | Wallet sig | User's contributions + loans |
+| `/api/amm/swap` | POST | Wallet sig | Execute swap (vault signs output) |
+| `/api/amm/quote` | GET | No | Swap preview |
+| `/api/amm/pool` | GET | No | Pool reserves + stats |
+| `/api/amm/liquidity` | POST | Wallet sig | Add liquidity |
+| `/api/history` | GET/POST | No/Optional | Query/record history |
+
+---
+
+## Deployment Workflow
+
+### 1. Deploy Backend
+
+```bash
+cd maverick-api
+vercel                              # First deploy
+vercel env add VAULT_PRIVATE_KEY    # Set vault key
+vercel env add SETUP_SECRET         # Set setup secret
+vercel --prod                       # Production deploy
+
+# Initialize database
+curl -X POST https://your-api.vercel.app/api/vault/setup \
+  -H "x-setup-secret: your-secret"
+```
+
+### 2. Configure CLI
+
+```bash
+# Set API_URL to use shared vault (add to ~/.maverick/.env or shell)
+export API_URL=https://your-api.vercel.app
+npx maverick
+```
+
+Without `API_URL`, the CLI runs in **local mode** (original solo vault behavior).
+
+### 3. Configure Web
+
+Add to `web/.env.local`:
+```
+NEXT_PUBLIC_API_URL=https://your-api.vercel.app
+```
+
+### 4. Publish CLI
+
+```bash
+npm run build
+npm publish    # publishes as "maverick-wallet"
+# Users run: npx maverick
+```
+
+---
 
 ## Agent Capabilities Summary
 
-| Capability | Real On-Chain | Autonomous | Multi-Agent |
-|-----------|:---:|:---:|:---:|
-| Wallet creation | Yes | Yes | Yes |
-| SOL transfers | Yes | Yes | Yes |
-| USDC transfers | Yes | Yes | Yes |
-| AMM swaps | Yes | Yes | Yes |
-| Bank deposit/loan | Yes | Yes | Yes |
-| Prediction bets | Yes | Yes | Yes |
-| Fund requests | Yes | Yes | Yes |
-| Peer lending | Yes | Yes | Yes |
-| Voice commands | - | Yes | Yes |
-| Audit logging | Yes | Yes | Yes |
+| Capability | Real On-Chain | Autonomous | Multi-Agent | Shared Vault |
+|-----------|:---:|:---:|:---:|:---:|
+| Wallet creation | Yes | Yes | Yes | - |
+| SOL transfers | Yes | Yes | Yes | Yes |
+| USDC transfers | Yes | Yes | Yes | Yes |
+| AMM swaps | Yes | Yes | Yes | Yes |
+| Bank deposit/loan | Yes | Yes | Yes | Yes |
+| Prediction bets | Yes | Yes | Yes | - |
+| Fund requests | Yes | Yes | Yes | - |
+| Peer lending | Yes | Yes | Yes | - |
+| Voice commands | - | Yes | Yes | - |
+| Audit logging | Yes | Yes | Yes | Yes |

@@ -30,7 +30,7 @@ export function SwapScreen() {
     const { sol, usdc } = useBalance(agent?.wallet ?? null, connection);
 
     // Vault (AJO Bank) balance to check liquidity
-    const vaultBal = useBalance(vaultManager.getWallet(), connection, 15000);
+    const vaultBal = useBalance(vaultManager?.getWallet() ?? null, connection, 15000);
 
     useEffect(() => {
         if (amount && parseFloat(amount) > 0) {

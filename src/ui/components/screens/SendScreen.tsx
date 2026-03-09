@@ -68,7 +68,7 @@ export function SendScreen() {
                 setResult({ type: 'success', text: `Sent ${amt} SOL! Sig: ${sig.slice(0, 16)}...` });
             } else {
                 // Real USDC SPL token transfer
-                const usdcMint = vaultManager.getUSDCMint();
+                const usdcMint = vaultManager?.getUSDCMint() ?? (await import('../../../core/tokenService.js')).USDC_MINT_DEVNET;
                 const sig = await TokenService.transferTokens(
                     connection,
                     usdcMint,

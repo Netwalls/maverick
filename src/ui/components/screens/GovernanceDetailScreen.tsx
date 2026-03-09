@@ -51,7 +51,7 @@ export function GovernanceDetailScreen() {
                     await signer.sendTransfer(providerAgent.wallet, requesterPubkey, request.amount);
                 } else {
                     // Real USDC SPL transfer: provider → requester
-                    const usdcMint = vaultManager.getUSDCMint();
+                    const usdcMint = vaultManager?.getUSDCMint() ?? (await import('../../../core/tokenService.js')).USDC_MINT_DEVNET;
                     await TokenService.transferTokens(
                         connection,
                         usdcMint,

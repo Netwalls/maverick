@@ -61,7 +61,7 @@ export function InviteScreen() {
             // Create wallet and agent, add to live services
             const wallet = new WalletManager(connection, secretKey, envKey);
             const target = new PublicKey('GfvXqVpM6X9mYh9f8B7xYv7zJkL5n7m5kGv5G5G5G5G5');
-            const agent = new MaverickAgent(connection, wallet, target, bank, name);
+            const agent = new MaverickAgent(connection, wallet, target, bank as any, name);
             bank.addParticipant(wallet);
             addAgent({ name, agent, wallet });
 

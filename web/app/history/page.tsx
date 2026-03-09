@@ -1,33 +1,39 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Terminal from '../../components/Terminal';
+import { useWallet } from '../../contexts/WalletContext';
+import { getHistory } from '../../lib/maverickApi';
 
 interface HistoryItem {
-  timestamp: string;
-  agentAddress: string;
+  id: number;
+  wallet: string;
   action: string;
   description: string;
-  signature?: string;
+  txSignature?: string;
   reasoning?: string;
+  createdAt: string;
 }
 
 export default function HistoryPage() {
+  const { wallet } = useWallet();
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('');
-  const [searchAddr, setSearchAddr] = useState('');
+  const [showAll, setShowAll] = useState(false);
 
-  useEffect(() => {
-    const params = searchAddr ? `?address=${searchAddr}` : '';
-    fetch(`/api/history${params}`)
-      .then(r => r.json())
-      .then(data => {
-        setHistory(data.history || []);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, [searchAddr]);
+  const fetchHistory = useCallback(async () => {
+    try {
+      const walletAddr = showAll ? undefined : wallet?.address;
+      const data = await getHistory(walletAddr);
+      setHistory(data.history || []);
+    } catch {
+      // silent
+    }
+    setLoading(false);
+  }, [wallet, showAll]);
+
+  useEffect(() => { fetchHistory(); }, [fetchHistory]);
 
   const actionTypes = [...new Set(history.map(h => h.action))];
 
@@ -46,7 +52,7 @@ export default function HistoryPage() {
   return (
     <div>
       <Terminal title="maverick :: history">
-        <div className="card-header">Transaction History</div>
+        <div className="card-header">Transaction History (Shared Vault)</div>
 
         <div className="flex gap-4" style={{ marginBottom: 16, flexWrap: 'wrap' }}>
           <div style={{ flex: 1, minWidth: 200 }}>
@@ -57,13 +63,16 @@ export default function HistoryPage() {
               ))}
             </select>
           </div>
-          <div style={{ flex: 1, minWidth: 200 }}>
-            <input
-              type="text"
-              value={searchAddr}
-              onChange={e => setSearchAddr(e.target.value)}
-              placeholder="Filter by agent address..."
-            />
+          <div>
+            <label style={{ fontSize: 11, color: 'var(--text-muted)', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={showAll}
+                onChange={e => setShowAll(e.target.checked)}
+                style={{ marginRight: 6 }}
+              />
+              Show all users
+            </label>
           </div>
         </div>
 
@@ -78,18 +87,18 @@ export default function HistoryPage() {
             <table>
               <thead>
                 <tr>
-                  <th>Timestamp</th>
+                  <th>Time</th>
                   <th>Action</th>
-                  <th>Agent</th>
+                  <th>Wallet</th>
                   <th>Description</th>
                   <th>Signature</th>
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((h, i) => (
-                  <tr key={i}>
+                {filtered.map((h) => (
+                  <tr key={h.id}>
                     <td style={{ fontSize: 11, color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>
-                      {new Date(h.timestamp).toLocaleString()}
+                      {new Date(h.createdAt).toLocaleString()}
                     </td>
                     <td>
                       <span className={`tag ${tagColor(h.action)}`}>
@@ -97,20 +106,20 @@ export default function HistoryPage() {
                       </span>
                     </td>
                     <td style={{ fontSize: 11 }}>
-                      {h.agentAddress.slice(0, 4)}...{h.agentAddress.slice(-4)}
+                      {h.wallet.slice(0, 4)}...{h.wallet.slice(-4)}
                     </td>
                     <td style={{ fontSize: 12, maxWidth: 300 }}>
                       {h.description}
                     </td>
                     <td>
-                      {h.signature ? (
+                      {h.txSignature ? (
                         <a
-                          href={`https://explorer.solana.com/tx/${h.signature}?cluster=devnet`}
+                          href={`https://explorer.solana.com/tx/${h.txSignature}?cluster=devnet`}
                           target="_blank"
                           rel="noopener noreferrer"
                           style={{ fontSize: 11 }}
                         >
-                          {h.signature.slice(0, 8)}...
+                          {h.txSignature.slice(0, 8)}...
                         </a>
                       ) : (
                         <span style={{ color: 'var(--text-muted)', fontSize: 11 }}>--</span>

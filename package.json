@@ -1,9 +1,15 @@
 {
-  "name": "maverick-agent-wallet",
-  "version": "1.0.1",
-  "description": "Maverick: Fine Terminal Multi-Agent Ecosystem",
+  "name": "maverick-wallet",
+  "version": "2.0.0",
+  "description": "Maverick: Fine Terminal Multi-Agent Ecosystem — Shared Vault + CLI",
   "type": "module",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "bin": {
+    "maverick": "./dist/cli.js"
+  },
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "start": "tsx src/ui/main.tsx",
     "maverick": "tsx src/ui/main.tsx",
@@ -11,9 +17,19 @@
     "invite": "tsx src/invite.ts",
     "command": "tsx src/utils/commander.ts",
     "history": "tsx src/utils/auditor.ts",
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "solana",
+    "defi",
+    "amm",
+    "wallet",
+    "cli",
+    "terminal",
+    "agent"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -28,6 +44,7 @@
     "ink-text-input": "^6.0.0",
     "node-record-lpcm16": "^1.0.1",
     "react": "^18.3.1",
+    "tweetnacl": "^1.0.3",
     "wav": "^1.0.2"
   },
   "devDependencies": {

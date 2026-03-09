@@ -1,0 +1,22 @@
+{
+  "name": "maverick-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "tsc",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.91.1",
+    "@vercel/postgres": "^0.10.0",
+    "bs58": "^5.0.0",
+    "tweetnacl": "^1.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5",
+    "vercel": "^37.0.0"
+  }
+}

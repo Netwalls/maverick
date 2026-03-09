@@ -1,58 +1,103 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import { PublicKey } from '@solana/web3.js';
 import Terminal from '../../components/Terminal';
+import { useWallet } from '../../contexts/WalletContext';
+import { getVaultInfo, bankDeposit, bankLoan, bankPayback, bankWithdraw, bankStatus } from '../../lib/maverickApi';
 
 interface BankData {
   vaultBalance: number;
   contribution: number;
-  loan?: { borrower: string; amount: number; fee: number; timestamp: string };
-  address: string;
+  loan: { id: number; amount: number; fee: number; totalPayback: number; createdAt: string } | null;
 }
 
 export default function BankPage() {
+  const { wallet, connection, refreshBalance } = useWallet();
   const [data, setData] = useState<BankData | null>(null);
-  const [agents, setAgents] = useState<{name: string, address: string}[]>([]);
-  const [selectedAgent, setSelectedAgent] = useState(0);
+  const [vaultPubkey, setVaultPubkey] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [amount, setAmount] = useState('');
   const [actionLoading, setActionLoading] = useState('');
   const [message, setMessage] = useState('');
 
-  const fetchBank = (agentIdx?: number) => {
-    const idx = agentIdx ?? selectedAgent;
-    fetch(`/api/bank?agentIndex=${idx}`)
-      .then(r => r.json())
-      .then(d => { setData(d); setLoading(false); })
-      .catch(() => setLoading(false));
-  };
+  const fetchBank = useCallback(async () => {
+    if (!wallet) return;
+    try {
+      const [vault, status] = await Promise.all([
+        getVaultInfo(),
+        bankStatus(wallet.keypair),
+      ]);
+      setVaultPubkey(vault.vault);
+      setData({
+        vaultBalance: vault.balanceOnChain,
+        contribution: status.contribution,
+        loan: status.loan,
+      });
+    } catch (e: any) {
+      setMessage(`ERROR: ${e.message}`);
+    }
+    setLoading(false);
+  }, [wallet]);
 
-  useEffect(() => {
-    fetchBank();
-    fetch('/api/wallet').then(r => r.json()).then(data => {
-      setAgents((data.agents || []).map((a: any) => ({ name: a.name, address: a.address })));
-    }).catch(() => {});
-  }, []);
+  useEffect(() => { fetchBank(); }, [fetchBank]);
 
-  const doAction = async (action: string) => {
-    setActionLoading(action);
+  const doDeposit = async () => {
+    if (!wallet || !vaultPubkey) return;
+    setActionLoading('deposit');
     setMessage('');
     try {
-      const res = await fetch('/api/bank', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action, amount: parseFloat(amount) || 0.1, agentIndex: selectedAgent }),
-      });
-      const result = await res.json();
-      if (result.error) {
-        setMessage(`ERROR: ${result.error}`);
-      } else if (result.success === false) {
-        setMessage(`DENIED: ${action} was rejected`);
-      } else {
-        setMessage(`${action.toUpperCase()} completed successfully`);
-        setAmount('');
-        fetchBank(selectedAgent);
-      }
+      const amt = parseFloat(amount) || 0.1;
+      await bankDeposit(connection, wallet.keypair, new PublicKey(vaultPubkey), amt);
+      setMessage(`DEPOSIT completed: ${amt} SOL`);
+      setAmount('');
+      await Promise.all([fetchBank(), refreshBalance()]);
+    } catch (e: any) {
+      setMessage(`ERROR: ${e.message}`);
+    }
+    setActionLoading('');
+  };
+
+  const doWithdraw = async () => {
+    if (!wallet) return;
+    setActionLoading('withdraw');
+    setMessage('');
+    try {
+      const amt = parseFloat(amount) || undefined;
+      const result = await bankWithdraw(wallet.keypair, amt);
+      setMessage(`WITHDRAWAL completed: ${result.amount} SOL`);
+      setAmount('');
+      await Promise.all([fetchBank(), refreshBalance()]);
+    } catch (e: any) {
+      setMessage(`ERROR: ${e.message}`);
+    }
+    setActionLoading('');
+  };
+
+  const doLoan = async () => {
+    if (!wallet) return;
+    setActionLoading('loan');
+    setMessage('');
+    try {
+      const amt = parseFloat(amount) || 0.1;
+      const result = await bankLoan(wallet.keypair, amt);
+      setMessage(`LOAN GRANTED: ${amt} SOL. Payback: ${result.totalPayback.toFixed(4)} SOL`);
+      setAmount('');
+      await Promise.all([fetchBank(), refreshBalance()]);
+    } catch (e: any) {
+      setMessage(`ERROR: ${e.message}`);
+    }
+    setActionLoading('');
+  };
+
+  const doPayback = async () => {
+    if (!wallet || !vaultPubkey || !data?.loan) return;
+    setActionLoading('payback');
+    setMessage('');
+    try {
+      await bankPayback(connection, wallet.keypair, new PublicKey(vaultPubkey), data.loan.totalPayback);
+      setMessage(`PAYBACK completed: ${data.loan.totalPayback.toFixed(4)} SOL`);
+      await Promise.all([fetchBank(), refreshBalance()]);
     } catch (e: any) {
       setMessage(`ERROR: ${e.message}`);
     }
@@ -62,44 +107,23 @@ export default function BankPage() {
   return (
     <div>
       <Terminal title="maverick :: bank">
-        <div className="card-header">Maverick Bank</div>
+        <div className="card-header">Maverick Bank (Shared Vault)</div>
 
         {loading ? (
           <div className="loader">Loading bank data</div>
         ) : data ? (
           <>
-            {agents.length > 1 && (
-              <div style={{ marginBottom: 16 }}>
-                <label style={{ fontSize: 11, color: 'var(--text-muted)', display: 'block', marginBottom: 4 }}>
-                  SELECT AGENT
-                </label>
-                <select
-                  value={selectedAgent}
-                  onChange={e => {
-                    const idx = parseInt(e.target.value);
-                    setSelectedAgent(idx);
-                    fetchBank(idx);
-                  }}
-                  style={{ maxWidth: 300 }}
-                >
-                  {agents.map((a, i) => (
-                    <option key={i} value={i}>{a.name} ({a.address.slice(0, 8)}...)</option>
-                  ))}
-                </select>
-              </div>
-            )}
-
             <div className="grid-3" style={{ marginBottom: 24 }}>
               <div className="card">
                 <div className="stat">
-                  <div className="stat-value">{data.vaultBalance.toFixed(2)}</div>
+                  <div className="stat-value">{data.vaultBalance.toFixed(4)}</div>
                   <div className="stat-label">Vault Balance (SOL)</div>
                 </div>
               </div>
               <div className="card">
                 <div className="stat">
                   <div className="stat-value" style={{ color: 'var(--cyan)' }}>
-                    {data.contribution.toFixed(2)}
+                    {data.contribution.toFixed(4)}
                   </div>
                   <div className="stat-label">Your Contribution</div>
                 </div>
@@ -107,7 +131,7 @@ export default function BankPage() {
               <div className="card">
                 <div className="stat">
                   <div className="stat-value" style={{ color: data.loan ? 'var(--red)' : 'var(--text-muted)' }}>
-                    {data.loan ? data.loan.amount.toFixed(2) : '0.00'}
+                    {data.loan ? data.loan.amount.toFixed(4) : '0.00'}
                   </div>
                   <div className="stat-label">Outstanding Loan</div>
                 </div>
@@ -131,17 +155,10 @@ export default function BankPage() {
                   />
                 </div>
                 <div className="flex gap-2">
-                  <button
-                    className="btn-green"
-                    onClick={() => doAction('deposit')}
-                    disabled={!!actionLoading}
-                  >
-                    {actionLoading === 'deposit' ? 'Processing...' : 'Deposit'}
+                  <button className="btn-green" onClick={doDeposit} disabled={!!actionLoading}>
+                    {actionLoading === 'deposit' ? 'Signing tx...' : 'Deposit'}
                   </button>
-                  <button
-                    onClick={() => doAction('withdraw')}
-                    disabled={!!actionLoading}
-                  >
+                  <button onClick={doWithdraw} disabled={!!actionLoading}>
                     {actionLoading === 'withdraw' ? 'Processing...' : 'Withdraw'}
                   </button>
                 </div>
@@ -159,24 +176,16 @@ export default function BankPage() {
                       <span style={{ color: 'var(--text-muted)' }}>Fee (5%): </span>
                       <span style={{ color: 'var(--yellow)' }}>{data.loan.fee} SOL</span>
                     </div>
-                    <button
-                      className="btn-red"
-                      onClick={() => doAction('payback')}
-                      disabled={!!actionLoading}
-                    >
-                      {actionLoading === 'payback' ? 'Processing...' : 'Payback Loan'}
+                    <button className="btn-red" onClick={doPayback} disabled={!!actionLoading}>
+                      {actionLoading === 'payback' ? 'Signing tx...' : 'Payback Loan'}
                     </button>
                   </div>
                 ) : (
                   <div>
                     <p style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 12 }}>
-                      No outstanding loan. Request a loan from the vault.
+                      No outstanding loan. Request a loan from the shared vault.
                     </p>
-                    <button
-                      className="btn-green"
-                      onClick={() => doAction('loan')}
-                      disabled={!!actionLoading}
-                    >
+                    <button className="btn-green" onClick={doLoan} disabled={!!actionLoading}>
                       {actionLoading === 'loan' ? 'Processing...' : `Request Loan (${parseFloat(amount) || 0.1} SOL)`}
                     </button>
                   </div>
@@ -190,8 +199,8 @@ export default function BankPage() {
                 padding: '8px 12px',
                 fontSize: 12,
                 background: 'var(--bg)',
-                border: `1px solid ${message.startsWith('ERROR') || message.startsWith('DENIED') ? 'var(--red)' : 'var(--green)'}`,
-                color: message.startsWith('ERROR') || message.startsWith('DENIED') ? 'var(--red)' : 'var(--green)',
+                border: `1px solid ${message.startsWith('ERROR') ? 'var(--red)' : 'var(--green)'}`,
+                color: message.startsWith('ERROR') ? 'var(--red)' : 'var(--green)',
               }}>
                 {message}
               </div>

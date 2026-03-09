@@ -2,6 +2,8 @@ import React, { createContext, useContext } from 'react';
 import type { Connection } from '@solana/web3.js';
 import type { MaverickBank } from '../../protocols/maverickBank.js';
 import type { MaverickAMM } from '../../protocols/maverickAMM.js';
+import type { RemoteMaverickBank } from '../../api/RemoteMaverickBank.js';
+import type { RemoteMaverickAMM } from '../../api/RemoteMaverickAMM.js';
 import type { AgentRegistry } from '../../core/agentRegistry.js';
 import type { TransactionSigner } from '../../core/transactionSigner.js';
 import type { HistoryProvider } from '../../utils/historyProvider.js';
@@ -17,14 +19,14 @@ export interface AgentEntry {
 
 export interface Services {
     connection: Connection;
-    bank: MaverickBank;
-    amm: MaverickAMM;
+    bank: MaverickBank | RemoteMaverickBank;
+    amm: MaverickAMM | RemoteMaverickAMM;
     registry: AgentRegistry;
     signer: TransactionSigner;
     history: HistoryProvider;
     agents: AgentEntry[];
     addAgent: (entry: AgentEntry) => void;
-    vaultManager: VaultManager;
+    vaultManager: VaultManager | null;
     activeAgentIndex: number;
     setActiveAgentIndex: (idx: number) => void;
 }

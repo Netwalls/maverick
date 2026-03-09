@@ -14,8 +14,12 @@ pnpm-debug.log*
 dist/
 build/
 out/
-lib/
 .next/
+
+# Ignore lib/ as build output, but keep source lib dirs
+/lib/
+!/maverick-api/lib/
+!/web/lib/
 
 # TypeScript
 *.tsbuildinfo

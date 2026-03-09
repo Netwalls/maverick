@@ -1,134 +1,100 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState, useCallback } from 'react';
 import Terminal from '../../components/Terminal';
-
-interface AgentInfo {
-  name: string;
-  address: string;
-  balance: number;
-  usdc: number;
-}
+import { useWallet } from '../../contexts/WalletContext';
 
 export default function WalletPage() {
-  const [agents, setAgents] = useState<AgentInfo[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedAgent, setSelectedAgent] = useState(0);
+  const { wallet, balance, loading, connection, importKey, exportKey, refreshBalance } = useWallet();
   const [airdropping, setAirdropping] = useState(false);
   const [message, setMessage] = useState('');
   const [copied, setCopied] = useState(false);
-
-  const fetchWallets = () => {
-    fetch('/api/wallet')
-      .then(r => r.json())
-      .then(data => {
-        setAgents(data.agents || []);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  };
-
-  useEffect(() => { fetchWallets(); }, []);
+  const [showImport, setShowImport] = useState(false);
+  const [importValue, setImportValue] = useState('');
+  const [showExport, setShowExport] = useState(false);
 
   const handleAirdrop = async () => {
+    if (!wallet) return;
     setAirdropping(true);
     setMessage('');
     try {
-      const res = await fetch('/api/wallet', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'airdrop', agentIndex: selectedAgent }),
-      });
-      const data = await res.json();
-      if (data.error) {
-        setMessage(`ERROR: ${data.error}`);
-      } else {
-        setMessage(`Airdrop confirmed. Sig: ${data.signature?.slice(0, 20)}...`);
-        fetchWallets();
-      }
+      const sig = await connection.requestAirdrop(wallet.publicKey, 1e9);
+      const { blockhash, lastValidBlockHeight } = await connection.getLatestBlockhash();
+      await connection.confirmTransaction({ signature: sig, blockhash, lastValidBlockHeight });
+      setMessage(`Airdrop confirmed. Sig: ${sig.slice(0, 20)}...`);
+      await refreshBalance();
     } catch (e: any) {
       setMessage(`ERROR: ${e.message}`);
     }
     setAirdropping(false);
   };
 
-  const copyAddress = (addr: string) => {
-    navigator.clipboard.writeText(addr);
+  const copyAddress = useCallback(() => {
+    if (!wallet) return;
+    navigator.clipboard.writeText(wallet.address);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  };
+  }, [wallet]);
 
-  const agent = agents[selectedAgent];
+  const handleImport = () => {
+    try {
+      importKey(importValue.trim());
+      setShowImport(false);
+      setImportValue('');
+      setMessage('Wallet imported successfully.');
+    } catch (e: any) {
+      setMessage(`ERROR: Invalid private key — ${e.message}`);
+    }
+  };
 
   return (
     <div>
       <Terminal title="maverick :: wallet">
         <div className="card-header">Wallet Management</div>
+        <p style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 16 }}>
+          Your wallet key is stored in this browser&apos;s localStorage. It persists across sessions
+          but is unique to this browser. Export your key to use the same wallet in the CLI.
+        </p>
 
         {loading ? (
-          <div className="loader">Loading wallets</div>
-        ) : (
+          <div className="loader">Loading wallet</div>
+        ) : wallet ? (
           <>
-            {agents.length > 1 && (
-              <div style={{ marginBottom: 16 }}>
-                <label style={{ fontSize: 11, color: 'var(--text-muted)', display: 'block', marginBottom: 4 }}>
-                  SELECT AGENT
-                </label>
-                <select
-                  value={selectedAgent}
-                  onChange={e => setSelectedAgent(parseInt(e.target.value))}
-                  style={{ maxWidth: 300 }}
+            <div className="grid-2">
+              <div className="card">
+                <div className="card-header">Balance</div>
+                <div className="stat-value" style={{ fontSize: 36 }}>
+                  {balance.toFixed(4)}
+                </div>
+                <div className="stat-label">SOL (devnet)</div>
+              </div>
+
+              <div className="card">
+                <div className="card-header">Address</div>
+                <div
+                  className="address"
+                  style={{ fontSize: 13, wordBreak: 'break-all', cursor: 'pointer' }}
+                  onClick={copyAddress}
                 >
-                  {agents.map((a, i) => (
-                    <option key={i} value={i}>{a.name} ({a.address.slice(0, 8)}...)</option>
-                  ))}
-                </select>
-              </div>
-            )}
-
-            {agent && (
-              <div className="grid-2">
-                <div className="card">
-                  <div className="card-header">Balance</div>
-                  <div className="stat-value" style={{ fontSize: 36 }}>
-                    {agent.balance.toFixed(2)}
-                  </div>
-                  <div className="stat-label">SOL (devnet)</div>
-                  <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid var(--border)' }}>
-                    <div className="stat-value" style={{ fontSize: 28, color: 'var(--cyan)' }}>
-                      {agent.usdc.toFixed(2)}
-                    </div>
-                    <div className="stat-label">USDC (devnet)</div>
-                  </div>
+                  {wallet.address}
                 </div>
-
-                <div className="card">
-                  <div className="card-header">Address</div>
-                  <div
-                    className="address"
-                    style={{ fontSize: 13, wordBreak: 'break-all', cursor: 'pointer' }}
-                    onClick={() => copyAddress(agent.address)}
-                  >
-                    {agent.address}
-                  </div>
-                  <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 8 }}>
-                    {copied ? (
-                      <span className="msg-success">Copied to clipboard</span>
-                    ) : (
-                      'Click to copy'
-                    )}
-                  </div>
-                  <a
-                    href={`https://explorer.solana.com/address/${agent.address}?cluster=devnet`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ fontSize: 11, marginTop: 4, display: 'inline-block' }}
-                  >
-                    View on Explorer
-                  </a>
+                <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 8 }}>
+                  {copied ? (
+                    <span className="msg-success">Copied to clipboard</span>
+                  ) : (
+                    'Click to copy'
+                  )}
                 </div>
+                <a
+                  href={`https://explorer.solana.com/address/${wallet.address}?cluster=devnet`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: 11, marginTop: 4, display: 'inline-block' }}
+                >
+                  View on Explorer
+                </a>
               </div>
-            )}
+            </div>
 
             <div className="card" style={{ marginTop: 16 }}>
               <div className="card-header">Devnet Faucet</div>
@@ -152,7 +118,47 @@ export default function WalletPage() {
                 </div>
               )}
             </div>
+
+            <div className="card" style={{ marginTop: 16 }}>
+              <div className="card-header">Key Management</div>
+              <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
+                <button className="btn-green" onClick={() => setShowExport(!showExport)}>
+                  {showExport ? 'Hide Key' : 'Export Private Key'}
+                </button>
+                <button className="btn-green" onClick={() => setShowImport(!showImport)}>
+                  Import Key
+                </button>
+              </div>
+              {showExport && (
+                <div style={{ marginTop: 12, padding: 12, background: 'var(--bg-secondary)', borderRadius: 4, wordBreak: 'break-all', fontSize: 12 }}>
+                  <div style={{ color: 'var(--red)', fontSize: 11, marginBottom: 8 }}>
+                    WARNING: Never share your private key. Anyone with this key controls your wallet.
+                  </div>
+                  <code>{exportKey()}</code>
+                </div>
+              )}
+              {showImport && (
+                <div style={{ marginTop: 12 }}>
+                  <p style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 8 }}>
+                    Paste a base58 private key to import an existing wallet.
+                    This replaces your current browser wallet.
+                  </p>
+                  <input
+                    type="password"
+                    value={importValue}
+                    onChange={e => setImportValue(e.target.value)}
+                    placeholder="Base58 private key..."
+                    style={{ width: '100%', marginBottom: 8 }}
+                  />
+                  <button className="btn-green" onClick={handleImport}>
+                    Import
+                  </button>
+                </div>
+              )}
+            </div>
           </>
+        ) : (
+          <div className="loader">Creating wallet...</div>
         )}
       </Terminal>
     </div>

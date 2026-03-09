@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { MaverickAMM } from '../../protocols/maverickAMM';
+import type { RemoteMaverickAMM } from '../../api/RemoteMaverickAMM';
 import { useInterval } from './useInterval';
 
 interface AMMStats {
@@ -9,7 +10,7 @@ interface AMMStats {
     price: number;
 }
 
-export function useAMMStats(amm: MaverickAMM, refreshMs = 5000) {
+export function useAMMStats(amm: MaverickAMM | RemoteMaverickAMM, refreshMs = 5000) {
     const [stats, setStats] = useState<AMMStats>({ sol: 0, usdc: 0, lpCount: 0, price: 0 });
 
     const refresh = useCallback(() => {
