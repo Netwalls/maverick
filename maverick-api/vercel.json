@@ -1,11 +1,4 @@
 {
-  "buildCommand": "tsc",
-  "outputDirectory": ".",
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "@vercel/node@3"
-    }
-  },
   "headers": [
     {
       "source": "/api/(.*)",
@@ -15,6 +8,5 @@
         { "key": "Access-Control-Allow-Headers", "value": "Content-Type,Authorization" }
       ]
     }
-  ],
-  "rewrites": []
+  ]
 }
